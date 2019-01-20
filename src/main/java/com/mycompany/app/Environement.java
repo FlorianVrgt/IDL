@@ -2,8 +2,9 @@ package com.mycompany.app;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
-public class Environement {
+public class Environement extends Observable{
 	
 	
 	private Agent grille[][];
@@ -11,18 +12,22 @@ public class Environement {
 	private int nbCelluleY;
 	private SMA sma;
 	private List<Agent> listeAgent;
-	public Environement(int nbCelluleX,int nbCelluleY, int nbAgent) {
+
+	public Environement(int nbCelluleX,int nbCelluleY, int nbAgent, Vue vue) {
 		listeAgent = new ArrayList<Agent>();
 		grille= new Agent[nbCelluleX][nbCelluleY];
 		Agent a = null;
 		this.nbCelluleX=nbCelluleX;
 		this.nbCelluleY=nbCelluleY;
+		
+		this.addObserver(vue);
+		
 		for(int i=0;i<nbAgent;i++) {
 			int x = (int) (Math.random()*nbCelluleX); 
 			int y = (int) (Math.random()*nbCelluleY);
 			if(grille[x][y]==null) {
-				int posx= (int) Math.random()*3-1;
-				int posy= (int) Math.random()*3-1;
+				int posx= (int) (Math.random()*3)-1;
+				int posy= (int) (Math.random()*3)-1;
 				 a = new Agent(x,y,posx,posy,grille,nbCelluleX,nbCelluleY);
 				grille[x][y]= a;
 				listeAgent.add(a);
@@ -57,6 +62,12 @@ public class Environement {
 			s+= "\n";
 		}
 		return s;
+	}
+	public void step() {
+		
+		sma.run();
+		setChanged();
+		notifyObservers();
 	}
 
 }

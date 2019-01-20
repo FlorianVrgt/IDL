@@ -2,11 +2,13 @@ package com.mycompany.app;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 
-public class vue {
+public class Vue implements Observer{
 
 	public void dessin (int width,int height, int billeX, int billeY) {
 		int NombreCase = width * height + 2;
@@ -25,6 +27,13 @@ public class vue {
 	
 	public static void main(String[] args) {
 		
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		Environement env =(Environement) o;
+		// to change by print real view.
+		System.out.println(env);
 	}
 
 }

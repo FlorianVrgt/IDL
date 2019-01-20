@@ -6,11 +6,14 @@ package com.mycompany.app;
  */
 public class App {
 	public static void main(String[] args) {
-		Environement env = new Environement(5, 5, 1);
+		Vue vue = new Vue();
+		Environement env = new Environement(5, 5, 2,vue);
+		
+		
 		System.out.println(env);
 		for (int i = 0; i < 100; i++) {
-			env.getSma().run();
-			System.out.println(env);
+			env.step();
+			
 		}
 		
 	}

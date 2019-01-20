@@ -1,10 +1,13 @@
 package com.mycompany.app;
 
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 public class SMA {
 	List<Agent> listeAgent;
 	Agent grille[][];
+
 	
 	public SMA(List<Agent> listeAgent, Agent grille [][]) {
 		super();
@@ -17,6 +20,8 @@ public class SMA {
 		for(Agent a: listeAgent) { // see random 
 			a.decide();
 		}
+		
 	}
+
 
 }
