@@ -60,7 +60,7 @@ public class Agent {
 			inv();
 			//decide();
 		}
-		System.out.println(this);
+		//System.out.println(this);
 		
 	}
 	

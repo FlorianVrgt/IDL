@@ -25,10 +25,7 @@ public class Vue implements Observer{
 		t.setVisible(true);
 	}
 	
-	public static void main(String[] args) {
-		
-	}
-
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		Environement env =(Environement) o;
