@@ -13,7 +13,6 @@ public class App {
 		System.out.println(env);
 		for (int i = 0; i < 100; i++) {
 			env.step();
-			vue.update(env, null);
 			
 		}
 		

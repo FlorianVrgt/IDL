@@ -6,6 +6,8 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -14,9 +16,9 @@ import javax.swing.border.Border;
 
 public class Vue implements Observer{
 
-	public static void dessin (int width,int height, int billeX, int billeY) {
+	public static void dessin (int width,int height, ArrayList<ArrayList<Integer>> bille) {
 		int NombreCase = width * height;
-		int CaseBille = billeX * billeY;
+		int CaseBille = bille.get(0).get(0) * bille.get(0).get(1);
 		JFrame t = new JFrame();
 		JPanel pan = new JPanel (new GridLayout (width,height));
 		Border blackline = BorderFactory.createLineBorder(Color.black,1);
@@ -42,18 +44,24 @@ public class Vue implements Observer{
 		t.add(pan);
 		t.setVisible(true);
 	}
-	
-
-	public static void main(String[] args) {
-		dessin(10,10,1,2);
-	}
 
 	@Override
 	public void update(Observable o, Object arg) {
+		ArrayList<ArrayList<Integer>> bille = new ArrayList<ArrayList<Integer>>();
 		Environement env =(Environement) o;
 		Agent grid[][] = env.getSma().grille;
-		System.out.println(grid.length);
-		dessin(grid.length,grid.length,1,1);
+		for(int i=0 ; i<grid.length ; i++) {
+			for(int j=0 ; j<grid.length ; j++) {
+				if(grid[i][j] != null) {
+					ArrayList<Integer> inter = new ArrayList<Integer>();
+					inter.add(i);
+					inter.add(j);
+					bille.add(inter);
+				}
+			}
+		}
+		List<Agent> ag = env.getSma().listeAgent;
+//		dessin(grid.length,grid.length,1,1);
 		// to change by print real view.
 	}
 
