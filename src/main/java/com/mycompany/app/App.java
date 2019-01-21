@@ -11,9 +11,16 @@ public class App {
 		//Environement env = new Environement(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]),vue);
 		
 		System.out.println(env);
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 10; i++) {
 			env.step();
 			
+			System.out.println(env);
+			 try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}

@@ -48,6 +48,38 @@ public class Environement extends Observable {
 
 	}
 
+	public Agent[][] getGrille() {
+		return grille;
+	}
+
+	public void setGrille(Agent[][] grille) {
+		this.grille = grille;
+	}
+
+	public int getSizeX() {
+		return sizeX;
+	}
+
+	public void setSizeX(int sizeX) {
+		this.sizeX = sizeX;
+	}
+
+	public int getSizeY() {
+		return sizeY;
+	}
+
+	public void setSizeY(int sizeY) {
+		this.sizeY = sizeY;
+	}
+
+	public List<Agent> getListeAgent() {
+		return listeAgent;
+	}
+
+	public void setListeAgent(List<Agent> listeAgent) {
+		this.listeAgent = listeAgent;
+	}
+
 	public SMA getSma() {
 		return sma;
 	}
