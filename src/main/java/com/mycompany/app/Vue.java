@@ -1,14 +1,11 @@
 package com.mycompany.app;
 
-import java.awt.*;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.RoundRectangle2D;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -48,14 +45,16 @@ public class Vue implements Observer{
 	
 
 	public static void main(String[] args) {
-		dessin(10,10,1,1);
+		dessin(10,10,1,2);
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		Environement env =(Environement) o;
+		Agent grid[][] = env.getSma().grille;
+		System.out.println(grid.length);
+		dessin(grid.length,grid.length,1,1);
 		// to change by print real view.
-		dessin(0, 0, 0, 0);
 	}
 
 }
