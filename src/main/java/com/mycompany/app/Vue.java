@@ -13,8 +13,11 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 public class Vue implements Observer{
+	JFrame jframe;
+	JPanel jpan; 
+	
 
-	public static void dessin (int width,int height, int billeX, int billeY) {
+	public  void dessin (int width,int height, int billeX, int billeY) {
 		int NombreCase = width * height;
 		int CaseBille = billeX * billeY;
 		JFrame t = new JFrame();
@@ -35,25 +38,28 @@ public class Vue implements Observer{
 			else {
 				ptest = new JPanel();
 			}
+			
 		   ptest.setBorder(blackline);
 		   pan.add(ptest);
 		}
 		pan.setBorder(blackline);
 		t.add(pan);
 		t.setVisible(true);
+		this.jframe = t;
+		this.jpan=pan;
 	}
 	
 
 	public static void main(String[] args) {
-		dessin(10,10,1,2);
+		new Vue().dessin(10,10,1,2);
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		Environement env =(Environement) o;
-		Agent grid[][] = env.getSma().grille;
-		System.out.println(grid.length);
-		dessin(grid.length,grid.length,1,1);
+		
+		
+		dessin(env.getSizeX(), env.getSizeY(),1,1);
 		// to change by print real view.
 	}
 
