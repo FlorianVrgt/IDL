@@ -1,10 +1,12 @@
-package com.mycompany.app;
+package Vue;
 
 import java.awt.GraphicsEnvironment;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
+
+import core.Environement;
 
 public class Vue extends JFrame implements Observer {
 	Jpan pan;

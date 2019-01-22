@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package core;
 
 public class CaseAgent {
 	private int x, y;

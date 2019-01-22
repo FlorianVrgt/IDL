@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package Vue;
 
 import java.awt.Color;
 import java.awt.Graphics;

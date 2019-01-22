@@ -1,16 +1,20 @@
-package com.mycompany.app;
+package core;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-public class Environement extends Observable {
+import Vue.Vue;
+import wator.Fish;
 
-	private Agent grille[][];
-	private int sizeX;
-	private int sizeY;
-	private SMA sma;
-	private List<Agent> listeAgent;
+public abstract class Environement extends Observable {
+
+	protected Agent grille[][];
+	protected int sizeX;
+	protected int sizeY;
+	protected SMA sma;
+	protected List<Agent> listeAgent;
 
 	public Environement(int sizeX, int sizeY, int nbAgent, Vue vue) {
 		ArrayList<CaseAgent> caseVide = new ArrayList<CaseAgent>();
@@ -39,7 +43,7 @@ public class Environement extends Observable {
 
 			int posx = (int) (Math.random() * 3) - 1;
 			int posy = (int) (Math.random() * 3) - 1;
-			a = new Agent(caseAgent.getX(), caseAgent.getY(), posx, posy, grille, sizeX, sizeY);
+			a = new Fish(caseAgent.getX(), caseAgent.getY(), posx, posy, grille, sizeX, sizeY,3,this);
 			grille[caseAgent.getX()][caseAgent.getY()] = a;
 			listeAgent.add(a);
 			caseVide.remove(index);
@@ -93,7 +97,12 @@ public class Environement extends Observable {
 		for (int i = 0; i < sizeX; i++) {
 			for (int j = 0; j < sizeY; j++) {
 				if (grille[i][j] != null) {
-					s += "X |";
+					if(grille[i][j].getClass().equals(Fish.class)) {
+						s += "F |";
+						
+					}else {
+						s +="R |";
+					}
 				} else {
 					s += "O |";
 				}
@@ -110,5 +119,10 @@ public class Environement extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+	
+	public abstract ArrayList<CaseAgent> caseAccesible(int x, int y);
+
+	
+	
 
 }

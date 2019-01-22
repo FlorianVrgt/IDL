@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package Vue;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -7,6 +7,8 @@ import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 
 import javax.swing.JPanel;
+
+import core.Environement;
 
 public class Jpan extends JPanel {
 	Environement env;
