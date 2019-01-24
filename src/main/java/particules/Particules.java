@@ -1,18 +1,16 @@
 package particules;
 
-import java.util.List;
-
 import core.Agent;
-import core.CaseAgent;
 import core.Environement;
+import core.SMA;
 
 public abstract class Particules extends Agent{
 
 
 	
-	public Particules(int posX, int posY, Agent[][] grille, int tailleX, int tailleY, int gestation,
-			Environement env) {
-		super(posX, posY, grille, tailleX, tailleY, gestation, env);
+	public Particules(int posX, int posY, Agent[][] grille, int gestation,
+			Environement env,SMA sma) {
+		super(posX, posY, grille, gestation, env,sma);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -17,11 +17,22 @@ public class SMA {
 	}
 
 	public void run() {
-		for(Agent a: listeAgent) { // see random 
-			a.decide();
+		for(int i=0; i<listeAgent.size();i++) {
+			Agent a = listeAgent.get(i);
 			System.out.println(a);
+			
+			a.decide();
+			
 		}
 		
+	}
+
+	public List<Agent> getListeAgent() {
+		return listeAgent;
+	}
+
+	public void setListeAgent(List<Agent> listeAgent) {
+		this.listeAgent = listeAgent;
 	}
 
 

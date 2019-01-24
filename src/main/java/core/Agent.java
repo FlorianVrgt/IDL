@@ -10,12 +10,11 @@ public abstract class Agent {
 
 	protected int posY;
 
-	protected int tailleX;
-	protected int tailleY;
 	protected int gestation;
 	protected int currentGestation;
 	protected Agent grille[][];
 	protected Environement env;
+	protected SMA sma;
 	
 	protected int posX;
 	public int getPosY() {
@@ -26,21 +25,6 @@ public abstract class Agent {
 		this.posY = posY;
 	}
  
-	public int getTailleX() {
-		return tailleX;
-	}
-
-	public void setTailleX(int tailleX) {
-		this.tailleX = tailleX;
-	}
-
-	public int getTailleY() {
-		return tailleY;
-	}
-
-	public void setTailleY(int tailleY) {
-		this.tailleY = tailleY;
-	}
 
 	public int getGestation() {
 		return gestation;
@@ -67,16 +51,16 @@ public abstract class Agent {
 	}
 
 
-	public Agent(int posX, int posY, Agent grille[][], int tailleX, int tailleY,int gestation,Environement env) {
+	public Agent(int posX, int posY, Agent grille[][],int gestation,Environement env,SMA sma) {
 		super();
 		this.setPosX(posX);
 		this.posY = posY;
 	
-		this.tailleX = tailleX;
-		this.tailleY = tailleY;
+
 		this.grille = grille;
 		this.gestation=gestation;
 		this.env=env;
+		this.sma=sma;
 	}
 
 	/*
@@ -157,14 +141,15 @@ public abstract class Agent {
 		this.posX = posX;
 	}
 	/*
-	 * déplace l'agent en futx, futy et actualise ces coordonées
+	 * déplace l'agent en futx, futy [CaseAgent [x=1, y=0], CaseAgent [x=1, y=1], CaseAgent [x=1, y=2], CaseAgent [x=2, y=0], CaseAgent [x=2, y=2], CaseAgent [x=3, y=0], CaseAgent [x=3, y=1], CaseAgent [x=3, y=2]]
+et actualise ces coordonées
 	 */
 	public void move(int x, int y, int futx, int futy) {
 		System.out.println("x:"+x+" y:"+y+"futx:"+futx+"futy: "+futy);
 		grille[futx][futy]=this;
 		grille[x][y]=null;
-		posX=x;
-		posY=y;
+		posX=futx;
+		posY=futy;
 		currentGestation++;
 	}
 	

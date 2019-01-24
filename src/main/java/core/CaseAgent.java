@@ -1,6 +1,11 @@
 package core;
 
 public class CaseAgent {
+	@Override
+	public String toString() {
+		return "CaseAgent [x=" + x + ", y=" + y + "]";
+	}
+
 	private int x, y;
 
 	public CaseAgent(int x, int y) {

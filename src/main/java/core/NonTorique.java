@@ -16,12 +16,14 @@ public class NonTorique extends Environement{
 		ArrayList<CaseAgent> ca = new ArrayList<CaseAgent>();
 		for (int i = x-1; i <=x + 1 ; i++) {
 			for (int j = y-1; j <= y+1; j++) {
-				if(i>=0 && j>=0 && i<sizeX && y<sizeY && (x!=i || y!=j)) {
+				if(i>=0 && j>=0 && i<sizeX && j<sizeY && (x!=i || y!=j)) {
 					ca.add(new CaseAgent(i, j));
+					
 					
 				}
 			}
 		}
+		System.out.println(ca);
 		System.out.println("nb case acces"+ca.size());
 		return ca;
 	}

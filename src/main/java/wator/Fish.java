@@ -1,20 +1,18 @@
 package wator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import core.Agent;
 import core.CaseAgent;
 import core.Environement;
+import core.SMA;
 import particules.Particules;
 
 public class Fish extends Particules {
 
 
 
-	public Fish(int posX, int posY,  Agent[][] grille, int tailleX, int tailleY, int gestation,
-			Environement env) {
-		super(posX, posY, grille, tailleX, tailleY, gestation, env);
+	public Fish(int posX, int posY,  Agent[][] grille, int gestation,
+			Environement env,SMA sma) {
+		super(posX, posY, grille,  gestation, env,sma);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -27,8 +25,10 @@ public class Fish extends Particules {
 
 	@Override
 	public void create(int x, int y) {
-	
-		grille[x][y]=new Fish(x, y, grille, tailleX, tailleY, gestation,env);
+		
+		grille[x][y]=new Fish(x, y, grille, gestation,env,sma);
+		 sma.getListeAgent().add(0,grille[x][y]);
+		currentGestation=0;
 		System.out.println("fish create");
 		
 	}

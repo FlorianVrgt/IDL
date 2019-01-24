@@ -35,20 +35,19 @@ public abstract class Environement extends Observable {
 				caseVide.add(new CaseAgent(i, j));
 			}
 		}
-
+		sma = new SMA(listeAgent, grille);
 		for (int i = 0; i < nbAgent; i++) {
 			int index = (int) (Math.random() * caseVide.size());
 			System.out.println(index);
 			CaseAgent caseAgent = caseVide.get(index);
 
-			int posx = (int) (Math.random() * 3) - 1;
-			int posy = (int) (Math.random() * 3) - 1;
-			a = new Fish(caseAgent.getX(), caseAgent.getY(), grille, sizeX, sizeY,3,this);
+			
+			a = new Fish(caseAgent.getX(), caseAgent.getY(), grille, 3, this,sma);
 			grille[caseAgent.getX()][caseAgent.getY()] = a;
 			listeAgent.add(a);
 			caseVide.remove(index);
 		}
-		sma = new SMA(listeAgent, grille);
+		
 
 	}
 

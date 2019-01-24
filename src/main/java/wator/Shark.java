@@ -5,15 +5,16 @@ import java.util.ArrayList;
 import core.Agent;
 import core.CaseAgent;
 import core.Environement;
+import core.SMA;
 import particules.Particules;
 
 public class Shark extends Particules {
 
 
 
-	public Shark(int posX, int posY, Agent[][] grille, int tailleX, int tailleY, int gestation,
-			Environement env) {
-		super(posX, posY, grille, tailleX, tailleY, gestation, env);
+	public Shark(int posX, int posY, Agent[][] grille,int gestation,
+			Environement env,SMA sma) {
+		super(posX, posY, grille, gestation, env,sma);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -31,7 +32,7 @@ public class Shark extends Particules {
 
 	@Override
 	public void create(int x, int y) {
-		grille[x][y]= new Shark(x, y, grille, tailleX, tailleY, gestation,env);
+		grille[x][y]= new Shark(x, y, grille, gestation,env,sma);
 	}
 
 	@Override
