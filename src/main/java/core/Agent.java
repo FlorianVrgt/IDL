@@ -127,8 +127,14 @@ public abstract class Agent {
 	public void setPosX(int posX) {
 		this.posX = posX;
 	}
-	public void move(int x, int y) {
-		
+	/*
+	 * déplace l'agent en futx, futy et actualise ces coordonées
+	 */
+	public void move(int x, int y, int futx, int futy) {
+		grille[futx][futy]=this;
+		grille[x][y]=null;
+		posX=x;
+		posY=y;
 	}
 		
 
