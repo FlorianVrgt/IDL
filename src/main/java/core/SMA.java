@@ -19,7 +19,7 @@ public class SMA {
 	public void run() {
 		for(int i=0; i<listeAgent.size();i++) {
 			Agent a = listeAgent.get(i);
-			System.out.println(a);
+			//System.out.println(a);posX, posY, grille, gestation, env, sma
 			
 			a.decide();
 			

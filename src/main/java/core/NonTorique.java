@@ -23,8 +23,8 @@ public class NonTorique extends Environement{
 				}
 			}
 		}
-		System.out.println(ca);
-		System.out.println("nb case acces"+ca.size());
+		//System.out.println(ca);
+		//System.out.println("nb case acces"+ca.size());
 		return ca;
 	}
 

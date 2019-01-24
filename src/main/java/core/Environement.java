@@ -4,9 +4,11 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
+import java.util.Random;
 
 import Vue.Vue;
 import wator.Fish;
+import wator.Shark;
 
 public abstract class Environement extends Observable {
 
@@ -41,8 +43,11 @@ public abstract class Environement extends Observable {
 			System.out.println(index);
 			CaseAgent caseAgent = caseVide.get(index);
 
-			
+			if((Math.random()*101)<80 ) {
 			a = new Fish(caseAgent.getX(), caseAgent.getY(), grille, 3, this,sma);
+			}else {
+				a= new Shark(caseAgent.getX(), caseAgent.getY(), grille, 5, this,sma);
+			}
 			grille[caseAgent.getX()][caseAgent.getY()] = a;
 			listeAgent.add(a);
 			caseVide.remove(index);

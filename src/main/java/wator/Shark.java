@@ -33,6 +33,9 @@ public class Shark extends Particules {
 	@Override
 	public void create(int x, int y) {
 		grille[x][y]= new Shark(x, y, grille, gestation,env,sma);
+		 sma.getListeAgent().add(0,grille[x][y]);
+		currentGestation=0;
+		System.out.println("fish create");
 	}
 
 	@Override

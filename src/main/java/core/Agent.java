@@ -80,7 +80,7 @@ public abstract class Agent {
 		}
 		
 		if(listCanEat.size()>=1) {
-			System.out.println("eat");
+			//System.out.println("eat");
 			CaseAgent toMove = canMove.get((int) (Math.random() * canMove.size()));
 			int futx = toMove.getX();
 			int futy = toMove.getY();
@@ -95,7 +95,7 @@ public abstract class Agent {
 				move(posX, posY, futx, futy);
 			}
 		} else if (canMove.size() >= 1) {
-			System.out.println("move");
+			//System.out.println("move");
 			CaseAgent toMove = canMove.get((int) (Math.random() * canMove.size()));
 			int futx = toMove.getX();
 			int futy = toMove.getY();
@@ -145,7 +145,7 @@ public abstract class Agent {
 et actualise ces coordonées
 	 */
 	public void move(int x, int y, int futx, int futy) {
-		System.out.println("x:"+x+" y:"+y+"futx:"+futx+"futy: "+futy);
+		//System.out.println("x:"+x+" y:"+y+"futx:"+futx+"futy: "+futy);
 		grille[futx][futy]=this;
 		grille[x][y]=null;
 		posX=futx;
