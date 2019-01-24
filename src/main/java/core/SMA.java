@@ -19,6 +19,7 @@ public class SMA {
 	public void run() {
 		for(Agent a: listeAgent) { // see random 
 			a.decide();
+			System.out.println(a);
 		}
 		
 	}

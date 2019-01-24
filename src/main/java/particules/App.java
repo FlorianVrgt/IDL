@@ -11,7 +11,7 @@ import core.NonTorique;
 public class App {
 	public static void main(String[] args) {
 		Vue vue = new Vue();
-		Environement env = new NonTorique(5, 5, 2,vue);
+		Environement env = new NonTorique(5, 5, 1,vue);
 		//Environement env = new Environement(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]),vue);
 		
 		System.out.println(env);
