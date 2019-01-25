@@ -6,41 +6,25 @@ import core.Agent;
 import core.CaseAgent;
 import core.Environement;
 import core.SMA;
+import particules.Carnivore;
 import particules.Particules;
 
-public class Shark extends Particules {
+public class Shark extends Carnivore {
 
+	
 
-
-	public Shark(int posX, int posY, Agent[][] grille,int gestation,
-			Environement env,SMA sma) {
-		super(posX, posY, grille, gestation, env,sma);
+	public Shark(int posX, int posY, Agent[][] grille, Environement env, SMA sma, int energyToReproduce,
+			int energyToDie, int energyCurrent, int energieDefault) {
+		super(posX, posY, grille, env, sma, energyToReproduce, energyToDie, energyCurrent, energieDefault);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void decide() {
-		super.decide();
-			
-		}
-
-	@Override
-	public boolean isMustDie() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public void create(int x, int y) {
-		grille[x][y]= new Shark(x, y, grille, gestation,env,sma);
-		 sma.getListeAgent().add(0,grille[x][y]);
-		currentGestation=0;
-		System.out.println("fish create");
-	}
+		grille[x][y] = new Shark(x, y, grille, env, sma, energyToReproduce, energyToDie, energyCurrent, energieDefault);
+		sma.getListeAgent().add(0, grille[x][y]);
 
-	@Override
-	public boolean canEat(CaseAgent ca) {
-		return env.getCase(ca).getClass().equals(Fish.class); 
+		System.out.println("shark create");
 	}
 
 }

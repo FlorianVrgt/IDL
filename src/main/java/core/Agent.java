@@ -7,11 +7,20 @@ import wator.Fish;
 
 public abstract class Agent {
 	
+	public Agent(int posX, int posY, Agent grille[][],Environement env,SMA sma) {
+		super();
+		this.setPosX(posX);
+		this.posY = posY;
+	
 
+		this.grille = grille;
+	
+		this.env=env;
+		this.sma=sma;
+	}
 	protected int posY;
 
-	protected int gestation;
-	protected int currentGestation;
+
 	protected Agent grille[][];
 	protected Environement env;
 	protected SMA sma;
@@ -26,22 +35,6 @@ public abstract class Agent {
 	}
  
 
-	public int getGestation() {
-		return gestation;
-	}
-
-	public void setGestation(int gestation) {
-		this.gestation = gestation;
-	}
-
-	public int getCurrentGestation() {
-		return currentGestation;
-	}
-
-	public void setCurrentGestation(int currentGestation) {
-		this.currentGestation = currentGestation;
-	}
-
 	public Agent[][] getGrille() {
 		return grille;
 	}
@@ -51,25 +44,16 @@ public abstract class Agent {
 	}
 
 
-	public Agent(int posX, int posY, Agent grille[][],int gestation,Environement env,SMA sma) {
-		super();
-		this.setPosX(posX);
-		this.posY = posY;
 	
-
-		this.grille = grille;
-		this.gestation=gestation;
-		this.env=env;
-		this.sma=sma;
-	}
 
 	/*
 	 * fonction pour donner la main à l'agent change de position et de pas.
 	 */
-	public  void decide() {
-		ArrayList<CaseAgent> caseDispo = env.caseAccesible(posX, posY);
-		ArrayList<CaseAgent> canMove = new ArrayList<>();
-		ArrayList<Agent> listCanEat = new ArrayList<>();
+	public  abstract void decide();
+	
+
+	protected void coverCase(ArrayList<CaseAgent> caseDispo, ArrayList<CaseAgent> canMove,
+			ArrayList<Agent> listCanEat) {
 		for (CaseAgent ca : caseDispo) {
 			if (env.getCase(ca)== null) {
 				canMove.add(new CaseAgent(ca.getX(), ca.getY()));
@@ -78,53 +62,19 @@ public abstract class Agent {
 			}
 
 		}
-		
-		if(listCanEat.size()>=1) {
-			//System.out.println("eat");
-			CaseAgent toMove = canMove.get((int) (Math.random() * canMove.size()));
-			int futx = toMove.getX();
-			int futy = toMove.getY();
-			
-			if(currentGestation>=gestation) {
-				int antx= posX;
-				int anty= posY;
-				move(posX, posY, futx, futy);
-				create(antx, anty);
-				currentGestation=0;
-			}else {
-				move(posX, posY, futx, futy);
-			}
-		} else if (canMove.size() >= 1) {
-			//System.out.println("move");
-			CaseAgent toMove = canMove.get((int) (Math.random() * canMove.size()));
-			int futx = toMove.getX();
-			int futy = toMove.getY();
-			
-			if(currentGestation>=gestation) {
-				int antx= posX;
-				int anty= posY;
-				move(posX, posY, futx, futy);
-				create(antx, anty);
-			}else {
-				move(posX, posY, futx, futy);
-			}
-			
-			
-		} else {
-			System.out.println("case non accesible");
-		}
 	}
 
 
 	@Override
 	public String toString() {
-		return "Agent [posX= " +posX+", posY=" + posY +  ", gestation=" + gestation
-				+ ", currentGestation=" + currentGestation + "]";
+		return "Agent [posX= " +posX+", posY=" + posY +   "]";
 	}
 
 
 	public abstract boolean isMustDie();
 	
+	
+
 	public void die() {
 		grille[getPosX()][posY]=null;
 		
@@ -150,7 +100,6 @@ et actualise ces coordonées
 		grille[x][y]=null;
 		posX=futx;
 		posY=futy;
-		currentGestation++;
 	}
 	
 	public abstract boolean canEat(CaseAgent ca);

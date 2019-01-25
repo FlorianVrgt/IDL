@@ -11,22 +11,25 @@ import core.NonTorique;
 public class App {
 	public static void main(String[] args) {
 		Vue vue = new Vue();
-		NonTorique env = new NonTorique(10, 10, 5,vue);
-//		Environement env = new Environement(10,10,5,vue);
-		//Environement env = new Environement(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]),vue);
-		
+		NonTorique env = new NonTorique(100, 100, 250, vue);
+		// NonTorique env = new NonTorique(5, 5, 2,vue);
+		// Environement env = new Environement(Integer.parseInt(args[1]),
+		// Integer.parseInt(args[2]), Integer.parseInt(args[3]),vue);
+
 		System.out.println(env);
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 1000; i++) {
 			env.step();
-			
-			System.out.println(env);
-			 try {
-				Thread.sleep(1000);
+
+			//System.out.println(env);
+
+			try {
+				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			System.out.println(i);
 		}
-		
+
 	}
 }
