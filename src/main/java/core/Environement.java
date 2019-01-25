@@ -44,9 +44,9 @@ public abstract class Environement extends Observable {
 			CaseAgent caseAgent = caseVide.get(index);
 
 			if((Math.random()*101)<80 ) {
-			a = new Fish(caseAgent.getX(), caseAgent.getY(), grille, this,sma,0,3);
+			a = new Fish(caseAgent.getX(), caseAgent.getY(), grille, this,sma,0,3,false);
 			}else {
-				a= new Shark(caseAgent.getX(), caseAgent.getY(), grille,this,sma,3,0,2,2);
+				a= new Shark(caseAgent.getX(), caseAgent.getY(), grille,this,sma,4,0,2,2,false);
 			}
 			grille[caseAgent.getX()][caseAgent.getY()] = a;
 			listeAgent.add(a);

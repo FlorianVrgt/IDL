@@ -15,8 +15,8 @@ public abstract class Herbivore extends Particules{
 	
 	
 	public Herbivore(int posX, int posY, Agent[][] grille, Environement env, SMA sma, int currentGestation,
-			int gestation) {
-		super(posX, posY, grille, env, sma);
+			int gestation,Boolean born) {
+		super(posX, posY, grille, env, sma, born);
 		this.currentGestation = currentGestation;
 		this.gestation = gestation;
 	}
@@ -24,7 +24,9 @@ public abstract class Herbivore extends Particules{
 
 
 	public void decide() {
-		
+		if(born) {
+			born=false;
+		}
 		ArrayList<CaseAgent> caseDispo = env.caseAccesible(posX, posY);
 		ArrayList<CaseAgent> canMove = new ArrayList<>();
 		ArrayList<Agent> listCanEat = new ArrayList<>();

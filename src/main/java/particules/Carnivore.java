@@ -21,8 +21,8 @@ public abstract class Carnivore extends Particules {
 
 	
 	public Carnivore(int posX, int posY, Agent[][] grille, Environement env, SMA sma, int energyToReproduce,
-			int energyToDie, int energyCurrent, int energieDefault) {
-		super(posX, posY, grille, env, sma);
+			int energyToDie, int energyCurrent, int energieDefault,Boolean born) {
+		super(posX, posY, grille, env, sma,born);
 		this.energyToReproduce = energyToReproduce;
 		this.energyToDie = energyToDie;
 		this.energyCurrent = energyCurrent;
@@ -31,7 +31,9 @@ public abstract class Carnivore extends Particules {
 
 	@Override
 	public void decide() {
-
+		if(born) {
+			born=false;
+		}
 		ArrayList<CaseAgent> caseDispo = env.caseAccesible(posX, posY);
 		ArrayList<CaseAgent> canMove = new ArrayList<>();
 		ArrayList<Agent> listCanEat = new ArrayList<>();
@@ -42,7 +44,7 @@ public abstract class Carnivore extends Particules {
 			Agent toMove = listCanEat.get((int) (Math.random() * listCanEat.size()));
 			int futx = toMove.getPosX();
 			int futy = toMove.getPosY();
-
+			
 			if (energyCurrent >= energyToReproduce) {
 				int antx = posX;
 				int anty = posY;
@@ -52,6 +54,7 @@ public abstract class Carnivore extends Particules {
 			} else {
 				move(posX, posY, futx, futy);
 			}
+			energyCurrent++;
 		} else if (canMove.size() >= 1) {
 			// System.out.println("move");
 			CaseAgent toMove = canMove.get((int) (Math.random() * canMove.size()));
@@ -59,8 +62,10 @@ public abstract class Carnivore extends Particules {
 			int futy = toMove.getY();
 
 			move(posX, posY, futx, futy);
+			energyCurrent--;
 		} else {
 			//System.out.println("case non accesible");
+			energyCurrent--;
 		}
 		if(isMustDie()) {
 			die();

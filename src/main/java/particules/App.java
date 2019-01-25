@@ -28,6 +28,7 @@ public class App {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			System.gc();
 			System.out.println(i);
 		}
 

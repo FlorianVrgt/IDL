@@ -7,19 +7,19 @@ import wator.Fish;
 
 public abstract class Agent {
 	
-	public Agent(int posX, int posY, Agent grille[][],Environement env,SMA sma) {
+
+	public Agent(int posY, Boolean born, Agent[][] grille, Environement env, SMA sma, int posX) {
 		super();
-		this.setPosX(posX);
 		this.posY = posY;
-	
-
+		this.born = born;
 		this.grille = grille;
-	
-		this.env=env;
-		this.sma=sma;
+		this.env = env;
+		this.sma = sma;
+		this.posX = posX;
 	}
-	protected int posY;
 
+	protected int posY;
+	protected Boolean born;
 
 	protected Agent grille[][];
 	protected Environement env;
@@ -77,6 +77,14 @@ public abstract class Agent {
 
 	public void die() {
 		grille[getPosX()][posY]=null;
+		sma.listeAgent.remove(this);
+		try {
+			this.finalize();
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		
 	}

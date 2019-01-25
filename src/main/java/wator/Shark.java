@@ -14,17 +14,17 @@ public class Shark extends Carnivore {
 	
 
 	public Shark(int posX, int posY, Agent[][] grille, Environement env, SMA sma, int energyToReproduce,
-			int energyToDie, int energyCurrent, int energieDefault) {
-		super(posX, posY, grille, env, sma, energyToReproduce, energyToDie, energyCurrent, energieDefault);
+			int energyToDie, int energyCurrent, int energieDefault,Boolean born) {
+		super(posX, posY, grille, env, sma, energyToReproduce, energyToDie, energyCurrent, energieDefault,born);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void create(int x, int y) {
-		grille[x][y] = new Shark(x, y, grille, env, sma, energyToReproduce, energyToDie, energyCurrent, energieDefault);
+		grille[x][y] = new Shark(x, y, grille, env, sma, energyToReproduce, energyToDie, energyCurrent, energieDefault,true);
 		sma.getListeAgent().add(0, grille[x][y]);
 
-		System.out.println("shark create");
+
 	}
 
 }
