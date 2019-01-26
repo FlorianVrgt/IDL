@@ -31,10 +31,9 @@ public class Jpan extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		g.clearRect(0, 0,(int) this.getSize().getWidth(), (int)this.getSize().getHeight());
-		double sizeX=this.getSize().getHeight()/env.getSizeX();
-		double sizeY=this.getSize().getHeight()/env.getSizeY();
-		System.out.println(sizeX + "  et sizeY " + sizeY);
 		if (env != null) {
+			double sizeX=this.getSize().getHeight()/env.getSizeX();
+			double sizeY=this.getSize().getHeight()/env.getSizeY();
 			int coorX = 0;
 			int coorY = 0;
 			for(int w = 0; w < env.getSizeX(); w++) {

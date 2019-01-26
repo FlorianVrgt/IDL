@@ -77,7 +77,6 @@ public abstract class Agent {
 
 	public void die() {
 		grille[getPosX()][posY]=null;
-		//System.out.println("die");
 		env.die++;
 		System.out.println(sma.listeAgent.remove(this));
 		
