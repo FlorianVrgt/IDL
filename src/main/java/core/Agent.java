@@ -77,13 +77,10 @@ public abstract class Agent {
 
 	public void die() {
 		grille[getPosX()][posY]=null;
-		sma.listeAgent.remove(this);
-		try {
-			this.finalize();
-		} catch (Throwable e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//System.out.println("die");
+		env.die++;
+		System.out.println(sma.listeAgent.remove(this));
+		
 		
 		
 		

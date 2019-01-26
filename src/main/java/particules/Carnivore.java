@@ -46,12 +46,14 @@ public abstract class Carnivore extends Particules {
 			int futy = toMove.getPosY();
 			
 			if (energyCurrent >= energyToReproduce) {
+				grille[futx][futy].die();
 				int antx = posX;
 				int anty = posY;
 				move(posX, posY, futx, futy);
 				create(antx, anty);
 				energyCurrent = energieDefault;
 			} else {
+				grille[futx][futy].die();
 				move(posX, posY, futx, futy);
 			}
 			energyCurrent++;

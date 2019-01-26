@@ -16,12 +16,16 @@ public class SMA {
 		
 	}
 
-	public void run() {
+	public void run() { //modif agent create
+		int size = listeAgent.size();
+		System.out.println("nbAgent"+size);
+		
 		for(int i=0; i<listeAgent.size();i++) {
 			Agent a = listeAgent.get(i);
-			//System.out.println(a);
+			
 			
 			a.decide();
+			
 			
 		}
 		

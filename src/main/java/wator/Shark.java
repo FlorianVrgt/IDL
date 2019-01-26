@@ -21,8 +21,9 @@ public class Shark extends Carnivore {
 
 	@Override
 	public void create(int x, int y) {
-		grille[x][y] = new Shark(x, y, grille, env, sma, energyToReproduce, energyToDie, energyCurrent, energieDefault,true);
-		sma.getListeAgent().add(0, grille[x][y]);
+		Shark s = new Shark(x, y, grille, env, sma, energyToReproduce, energyToDie, energyCurrent, energieDefault,true);
+		 sma.getListeAgent().add(0,s);
+		 grille[x][y]=s;
 
 
 	}

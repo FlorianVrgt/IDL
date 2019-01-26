@@ -16,9 +16,11 @@ public abstract class Environement extends Observable {
 	protected int sizeX;
 	protected int sizeY;
 	protected SMA sma;
+	public int die;
 	protected List<Agent> listeAgent;
 
 	public Environement(int sizeX, int sizeY, int nbAgent, Vue vue) {
+		die=0;
 		ArrayList<CaseAgent> caseVide = new ArrayList<CaseAgent>();
 		listeAgent = new ArrayList<Agent>();
 		grille = new Agent[sizeX][sizeY];
