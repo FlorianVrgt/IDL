@@ -37,7 +37,7 @@ public class App {
 		for (int i = 0; i < nbTour; i++) {
 			env.step();
 
-			//System.out.println(env);
+			
 
 			try {
 				Thread.sleep(delay);
@@ -45,9 +45,13 @@ public class App {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 			System.out.println("nb mort"+env.die );
 			env.die=0;
 			System.out.println("nb tour"+i);
+			
+			
+			System.out.println(env);
 		}
 
 	}

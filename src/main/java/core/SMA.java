@@ -20,6 +20,9 @@ public class SMA {
 		int size = listeAgent.size();
 		System.out.println("nbAgent"+size);
 		
+		
+		// to del
+		
 		for(int i=0; i<listeAgent.size();i++) {
 			Agent a = listeAgent.get(i);
 			
