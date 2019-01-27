@@ -1,6 +1,6 @@
-nbAgent=2
-sizeY=3
-sizeX=3
+nbAgent=50
+sizeY=50
+sizeX=50
 delay=200
 prSharks=80
 nbTour=1000

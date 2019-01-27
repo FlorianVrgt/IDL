@@ -28,7 +28,9 @@ public class SMA {
 			
 			
 			a.decide();
-			
+			if(a!=grille[a.posX][a.posY]) {
+				System.out.println("Erreur");
+			}
 			
 		}
 		

@@ -48,11 +48,14 @@ public abstract class Environement extends Observable {
 			if((Math.random()*101)<50 ) {
 			a = new Fish(caseAgent.getX(), caseAgent.getY(), grille, this,sma,0,3,false);
 			}else {
-				a= new Shark(caseAgent.getX(), caseAgent.getY(), grille,this,sma,4,0,2,2,false);
+				a= new Shark(caseAgent.getX(), caseAgent.getY(), grille,this,sma,4,0,10,10,false);
 			}
 			grille[caseAgent.getX()][caseAgent.getY()] = a;
 			listeAgent.add(a);
 			caseVide.remove(index);
+			if(a!=grille[a.posX][a.posY]) {
+				System.out.println("Erreur");
+			}
 		}
 		
 

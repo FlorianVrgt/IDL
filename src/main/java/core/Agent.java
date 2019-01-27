@@ -8,7 +8,7 @@ import wator.Fish;
 public abstract class Agent {
 	
 
-	public Agent(int posY, Boolean born, Agent[][] grille, Environement env, SMA sma, int posX) {
+	public Agent(int posX,int posY , Agent[][] grille, Environement env, SMA sma, Boolean born) {
 		super();
 		this.posY = posY;
 		this.born = born;
@@ -96,15 +96,21 @@ public abstract class Agent {
 		this.posX = posX;
 	}
 	/*
-	 * déplace l'agent en futx, futy [CaseAgent [x=1, y=0], CaseAgent [x=1, y=1], CaseAgent [x=1, y=2], CaseAgent [x=2, y=0], CaseAgent [x=2, y=2], CaseAgent [x=3, y=0], CaseAgent [x=3, y=1], CaseAgent [x=3, y=2]]
+	 * déplace l'agent en futx, futy
 et actualise ces coordonées
 	 */
 	public void move(int x, int y, int futx, int futy) {
+		if(this!=grille[posX][posY]) {
+			System.out.println("Erreur");
+		}
 		//System.out.println("x:"+x+" y:"+y+"futx:"+futx+"futy: "+futy);
 		grille[futx][futy]=this;
 		grille[x][y]=null;
 		posX=futx;
 		posY=futy;
+		if(this!=grille[posX][posY]) {
+			System.out.println("Erreur");
+		}
 	}
 	
 	public abstract boolean canEat(CaseAgent ca);

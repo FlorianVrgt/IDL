@@ -6,8 +6,8 @@ import core.SMA;
 
 public abstract class Particules extends Agent{
 
-	public Particules(int posY, int posX, Agent[][] grille, Environement env, SMA sma, Boolean born) {
-		super(posY, born, grille, env, sma, posX);
+	public Particules(int posX, int posY, Agent[][] grille, Environement env, SMA sma, Boolean born) {
+		super(posX, posY, grille, env, sma, born);
 		// TODO Auto-generated constructor stub
 	}
 

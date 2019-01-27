@@ -46,12 +46,10 @@ public class App {
 				e.printStackTrace();
 			}
 			
-			System.out.println("nb mort"+env.die );
-			env.die=0;
-			System.out.println("nb tour"+i);
 			
 			
-			System.out.println(env);
+			
+			
 		}
 
 	}
