@@ -5,7 +5,9 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import Vue.Vue;
+import core.Environement;
 import core.NonTorique;
+import core.Torique;
 
 /**
  * Hello world!
@@ -28,11 +30,15 @@ public class App {
 		int nbTour= Integer.parseInt(prop.getProperty("nbTour"));
 		int delay = Integer.parseInt(prop.getProperty("delay"));
 		Vue vue = new Vue();
-		NonTorique env = new NonTorique(Integer.parseInt(prop.getProperty("sizeX")), Integer.parseInt(prop.getProperty("sizeY")),Integer.parseInt(prop.getProperty("nbAgent")), vue);
-		// NonTorique env = new NonTorique(5, 5, 2,vue);
-		// Environement env = new Environement(Integer.parseInt(args[1]),
-		// Integer.parseInt(args[2]), Integer.parseInt(args[3]),vue);
-
+		Environement env;
+		int sizeX =Integer.parseInt(prop.getProperty("sizeX"));
+		int sizeY =Integer.parseInt(prop.getProperty("sizeY"));
+		int nbAgent =Integer.parseInt(prop.getProperty("nbAgent"));
+		if(Boolean.parseBoolean(prop.getProperty("torique"))) {
+		 env = new NonTorique(sizeX, sizeY,nbAgent, vue);
+		}else {
+			env = new Torique(sizeX, sizeY, nbAgent, vue);
+		}
 		for (int i = 0; i < nbTour; i++) {
 			env.step();
 
