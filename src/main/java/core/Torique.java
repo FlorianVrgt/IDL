@@ -6,8 +6,11 @@ import Vue.Vue;
 
 public class Torique extends Environement {
 
-	public Torique(int sizeX, int sizeY, int nbAgent, Vue vue) {
-		super(sizeX, sizeY, nbAgent, vue);
+
+
+
+	public Torique(int sizeX, int sizeY, int nbFish, int nbShark, Vue vue) {
+		super(sizeX, sizeY, nbFish, nbShark, vue);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -18,7 +21,7 @@ public class Torique extends Environement {
 		for (int i = x - 1; i <= x + 1; i++) {
 			for (int j = y - 1; j <= y + 1; j++) {
 				
-					ca.add(new CaseAgent(i%this.sizeX, j%this.sizeY));
+					ca.add(new CaseAgent(Math.floorMod(i, this.sizeX), Math.floorMod(j, this.sizeY)));
 
 				
 			}

@@ -19,7 +19,7 @@ public abstract class Environement extends Observable {
 	public int die;
 	protected List<Agent> listeAgent;
 
-	public Environement(int sizeX, int sizeY, int nbAgent, Vue vue) {
+	public Environement(int sizeX, int sizeY, int nbFish,int nbShark, Vue vue) {
 		die=0;
 		ArrayList<CaseAgent> caseVide = new ArrayList<CaseAgent>();
 		listeAgent = new ArrayList<Agent>();
@@ -27,9 +27,10 @@ public abstract class Environement extends Observable {
 		Agent a = null;
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
+		int nbAgent= nbFish+nbShark;
 
 		this.addObserver(vue);
-		if (nbAgent >= sizeX * sizeY) {
+		if (nbFish+nbShark >= sizeX * sizeY) {
 			System.out.println("Erreur, trop d'agent");
 			System.exit(-1);
 		}
@@ -45,8 +46,9 @@ public abstract class Environement extends Observable {
 			System.out.println(index);
 			CaseAgent caseAgent = caseVide.get(index);
 
-			if((Math.random()*101)<50 ) {
+			if(nbFish>0 ) {
 			a = new Fish(caseAgent.getX(), caseAgent.getY(), grille, this,sma,0,3,false);
+			nbFish--;
 			}else {
 				a= new Shark(caseAgent.getX(), caseAgent.getY(), grille,this,sma,4,0,10,10,false);
 			}

@@ -1,7 +1,7 @@
-nbAgent=50
 sizeY=50
 sizeX=50
-prSharks=80
+nbShark=3
+nbFish=3
 nbTour=1000
 delay=200
 torique=true

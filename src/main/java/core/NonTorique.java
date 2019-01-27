@@ -6,8 +6,10 @@ import Vue.Vue;
 
 public class NonTorique extends Environement{
 
-	public NonTorique(int sizeX, int sizeY, int nbAgent, Vue vue) {
-		super(sizeX, sizeY, nbAgent, vue);
+
+
+	public NonTorique(int sizeX, int sizeY, int nbFish, int nbShark, Vue vue) {
+		super(sizeX, sizeY, nbFish, nbShark, vue);
 		// TODO Auto-generated constructor stub
 	}
 

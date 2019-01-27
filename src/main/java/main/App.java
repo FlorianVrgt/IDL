@@ -1,4 +1,4 @@
-package particules;
+package main;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -17,6 +17,7 @@ public class App {
 	public static void main(String[] args) {
 		final Properties prop = new Properties();
 		InputStream input = null;
+		System.out.println(Math.floorMod(2, 3));
 
 		try {
 
@@ -33,11 +34,12 @@ public class App {
 		Environement env;
 		int sizeX =Integer.parseInt(prop.getProperty("sizeX"));
 		int sizeY =Integer.parseInt(prop.getProperty("sizeY"));
-		int nbAgent =Integer.parseInt(prop.getProperty("nbAgent"));
+		int nbFish =Integer.parseInt(prop.getProperty("nbFish"));
+		int nbShark =Integer.parseInt(prop.getProperty("nbShark"));
 		if(Boolean.parseBoolean(prop.getProperty("torique"))) {
-		 env = new NonTorique(sizeX, sizeY,nbAgent, vue);
+		 env = new Torique(sizeX, sizeY, nbFish,nbShark, vue);
 		}else {
-			env = new Torique(sizeX, sizeY, nbAgent, vue);
+			env = new NonTorique(sizeX, sizeY, nbFish,nbShark, vue);
 		}
 		for (int i = 0; i < nbTour; i++) {
 			env.step();
