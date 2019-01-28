@@ -68,9 +68,7 @@ public abstract class Carnivore extends Particules {
 		if (isMustDie()) {
 			die();
 		}
-		if (this != grille[this.posX][this.posY]) {
-			System.out.println("Erreur");
-		}
+		
 	}
 
 	@Override
