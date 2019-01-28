@@ -19,9 +19,10 @@ public class Vue extends JFrame implements Observer {
 	public Vue() {
 
 		pan = new Jpan(env);
-		this.setTitle("Ma première fenêtre Java");
-		GraphicsEnvironment.getLocalGraphicsEnvironment();
-		this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_BOTH);
+		this.setTitle("SMA et c'est facile");
+//		GraphicsEnvironment.getLocalGraphicsEnvironment();
+//		this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_BOTH);
+		this.setSize(500, 500);
 		this.setLocationRelativeTo(null);
 
 		this.setContentPane(pan);
