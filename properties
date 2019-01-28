@@ -1,7 +1,9 @@
-sizeY=100
-sizeX=100
-nbShark=100
-nbFish=50
+sizeY=10
+sizeX=10
+sizePixelX=500
+sizePixelY=500
+nbShark=1
+nbFish=10
 nbTour=1000
-delay=50
+delay=500
 torique=true
