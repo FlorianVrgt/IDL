@@ -3,10 +3,10 @@ package particules;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import SMA.SMA;
 import core.Agent;
 import core.CaseAgent;
 import core.Environement;
-import core.SMA;
 import wator.Fish;
 import wator.Shark;
 
@@ -29,6 +29,7 @@ public abstract class Carnivore extends Particules {
 	public void decide() {
 		if (born) {
 			born = false;
+			return;
 		}
 		ArrayList<CaseAgent> caseDispo = env.caseAccesible(posX, posY);
 		ArrayList<CaseAgent> canMove = new ArrayList<>();

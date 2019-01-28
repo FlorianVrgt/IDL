@@ -2,10 +2,10 @@ package wator;
 
 import java.util.ArrayList;
 
+import SMA.SMA;
 import core.Agent;
 import core.CaseAgent;
 import core.Environement;
-import core.SMA;
 import particules.Carnivore;
 import particules.Particules;
 
@@ -22,7 +22,7 @@ public class Shark extends Carnivore {
 
 		Shark s = new Shark(x, y, grille, env, sma, energyToReproduce, energyToDie, -3, energieDefault,
 				true);
-		sma.getListeAgent().add(0, s);
+		sma.getAgentToAdd().add(s);
 		grille[x][y] = s;
 		if (this != grille[posX][posY]) {
 			System.out.println("Erreur");

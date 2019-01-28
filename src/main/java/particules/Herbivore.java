@@ -2,10 +2,10 @@ package particules;
 
 import java.util.ArrayList;
 
+import SMA.SMA;
 import core.Agent;
 import core.CaseAgent;
 import core.Environement;
-import core.SMA;
 
 public abstract class Herbivore extends Particules {
 
@@ -22,6 +22,7 @@ public abstract class Herbivore extends Particules {
 	public void decide() {
 		if (born) {
 			born = false;
+			return;
 		}
 		ArrayList<CaseAgent> caseDispo = env.caseAccesible(posX, posY);
 		ArrayList<CaseAgent> canMove = new ArrayList<>();

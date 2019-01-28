@@ -3,6 +3,7 @@ package core;
 import java.util.ArrayList;
 import java.util.List;
 
+import SMA.SMA;
 import wator.Fish;
 
 public abstract class Agent {
@@ -23,6 +24,14 @@ public abstract class Agent {
 	protected Agent grille[][];
 	protected Environement env;
 	protected SMA sma;
+
+	public SMA getSma() {
+		return sma;
+	}
+
+	public void setSma(SMA sma) {
+		this.sma = sma;
+	}
 
 	protected int posX;
 
@@ -85,7 +94,7 @@ public abstract class Agent {
 	public void die() {
 		grille[getPosX()][posY] = null;
 		env.die++;
-		System.out.println(sma.listeAgent.remove(this));
+		System.out.println(sma.getListeAgent().remove(this));
 
 	}
 
@@ -102,7 +111,7 @@ public abstract class Agent {
 	 */
 	public void move(int x, int y, int futx, int futy) {
 		if (this != grille[posX][posY]) {
-			System.out.println("Erreur");
+			//System.out.println("Erreur");
 		}
 		// System.out.println("x:"+x+" y:"+y+"futx:"+futx+"futy: "+futy);
 		grille[futx][futy] = this;
@@ -110,7 +119,7 @@ public abstract class Agent {
 		posX = futx;
 		posY = futy;
 		if (this != grille[posX][posY]) {
-			System.out.println("Erreur");
+			//System.out.println("Erreur");
 		}
 	}
 

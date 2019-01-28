@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Random;
 
+import SMA.SMA;
 import Vue.Vue;
 import wator.Fish;
 import wator.Shark;

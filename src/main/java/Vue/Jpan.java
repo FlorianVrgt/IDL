@@ -54,16 +54,16 @@ public class Jpan extends JPanel {
 							else {
 								g.setColor(new Color(0,255,0));
 							}
-							g.fillOval(i*((int)sizeX),j*((int)sizeY), ((int)sizeX), ((int)sizeX));
+							g.fillOval(i*((int)sizeX),j*((int)sizeY), ((int)sizeX), ((int)sizeY));
 						}
 						else {
 							if(env.getGrille()[i][j].getBorn()) {
-								g.setColor(new Color(255,192,203));
+								g.setColor(new Color(255,50,250));
 							}
 							else {
 								g.setColor(new Color(255,0,0));
 							}
-							g.fillOval(i*((int)sizeX),j*((int)sizeY), ((int)sizeX), ((int)sizeX));
+							g.fillOval(i*((int)sizeX),j*((int)sizeY), ((int)sizeX), ((int)sizeY));
 						}
 					} 
 

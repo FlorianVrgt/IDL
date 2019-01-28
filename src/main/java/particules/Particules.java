@@ -1,8 +1,8 @@
 package particules;
 
+import SMA.SMA;
 import core.Agent;
 import core.Environement;
-import core.SMA;
 
 public abstract class Particules extends Agent {
 
