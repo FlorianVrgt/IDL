@@ -16,13 +16,9 @@ public abstract class Carnivore extends Particules {
 	protected int energyCurrent;
 	protected int energieDefault;
 
-
-
-
-	
 	public Carnivore(int posX, int posY, Agent[][] grille, Environement env, SMA sma, int energyToReproduce,
-			int energyToDie, int energyCurrent, int energieDefault,Boolean born) {
-		super(posX, posY, grille, env, sma,born);
+			int energyToDie, int energyCurrent, int energieDefault, Boolean born) {
+		super(posX, posY, grille, env, sma, born);
 		this.energyToReproduce = energyToReproduce;
 		this.energyToDie = energyToDie;
 		this.energyCurrent = energyCurrent;
@@ -31,8 +27,8 @@ public abstract class Carnivore extends Particules {
 
 	@Override
 	public void decide() {
-		if(born) {
-			born=false;
+		if (born) {
+			born = false;
 		}
 		ArrayList<CaseAgent> caseDispo = env.caseAccesible(posX, posY);
 		ArrayList<CaseAgent> canMove = new ArrayList<>();
@@ -44,7 +40,7 @@ public abstract class Carnivore extends Particules {
 			Agent toMove = listCanEat.get((int) (Math.random() * listCanEat.size()));
 			int futx = toMove.getPosX();
 			int futy = toMove.getPosY();
-			
+
 			if (energyCurrent >= energyToReproduce) {
 				grille[futx][futy].die();
 				int antx = posX;
@@ -66,23 +62,22 @@ public abstract class Carnivore extends Particules {
 			move(posX, posY, futx, futy);
 			energyCurrent--;
 		} else {
-			//System.out.println("case non accesible");
+			// System.out.println("case non accesible");
 			energyCurrent--;
 		}
-		if(isMustDie()) {
+		if (isMustDie()) {
 			die();
 		}
-		if(this!=grille[this.posX][this.posY]) {
+		if (this != grille[this.posX][this.posY]) {
 			System.out.println("Erreur");
 		}
 	}
 
 	@Override
 	public boolean isMustDie() {
-		return energyToDie>=energyCurrent;
+		return energyToDie >= energyCurrent;
 	}
 
-	
 	@Override
 	public boolean canEat(CaseAgent ca) {
 		return env.getCase(ca).getClass().equals(Fish.class);
@@ -91,9 +86,7 @@ public abstract class Carnivore extends Particules {
 	@Override
 	public String toString() {
 		return "Carnivore [energyToReproduce=" + energyToReproduce + ", energyToDie=" + energyToDie + ", energyCurrent="
-				+ energyCurrent + ", energieDefault=" + energieDefault + ", posY=" + posY +", posX=" + posX + "]";
+				+ energyCurrent + ", energieDefault=" + energieDefault + ", posY=" + posY + ", posX=" + posX + "]";
 	}
-
-	
 
 }

@@ -19,18 +19,18 @@ public abstract class Environement extends Observable {
 	public int die;
 	protected List<Agent> listeAgent;
 
-	public Environement(int sizeX, int sizeY, int nbFish,int nbShark, Vue vue) {
-		die=0;
+	public Environement(int sizeX, int sizeY, int nbFish, int nbShark, Vue vue) {
+		die = 0;
 		ArrayList<CaseAgent> caseVide = new ArrayList<CaseAgent>();
 		listeAgent = new ArrayList<Agent>();
 		grille = new Agent[sizeX][sizeY];
 		Agent a = null;
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
-		int nbAgent= nbFish+nbShark;
+		int nbAgent = nbFish + nbShark;
 
 		this.addObserver(vue);
-		if (nbFish+nbShark >= sizeX * sizeY) {
+		if (nbFish + nbShark >= sizeX * sizeY) {
 			System.out.println("Erreur, trop d'agent");
 			System.exit(-1);
 		}
@@ -46,20 +46,19 @@ public abstract class Environement extends Observable {
 			System.out.println(index);
 			CaseAgent caseAgent = caseVide.get(index);
 
-			if(nbFish>0 ) {
-			a = new Fish(caseAgent.getX(), caseAgent.getY(), grille, this,sma,0,3,false);
-			nbFish--;
-			}else {
-				a= new Shark(caseAgent.getX(), caseAgent.getY(), grille,this,sma,4,0,10,10,false);
+			if (nbFish > 0) {
+				a = new Fish(caseAgent.getX(), caseAgent.getY(), grille, this, sma, 0, 3, false);
+				nbFish--;
+			} else {
+				a = new Shark(caseAgent.getX(), caseAgent.getY(), grille, this, sma, 5, -3, 2, 2, false);
 			}
 			grille[caseAgent.getX()][caseAgent.getY()] = a;
 			listeAgent.add(a);
 			caseVide.remove(index);
-			if(a!=grille[a.posX][a.posY]) {
+			if (a != grille[a.posX][a.posY]) {
 				System.out.println("Erreur");
 			}
 		}
-		
 
 	}
 
@@ -108,11 +107,11 @@ public abstract class Environement extends Observable {
 		for (int i = 0; i < sizeX; i++) {
 			for (int j = 0; j < sizeY; j++) {
 				if (grille[i][j] != null) {
-					if(grille[i][j].getClass().equals(Fish.class)) {
+					if (grille[i][j].getClass().equals(Fish.class)) {
 						s += "F |";
-						
-					}else {
-						s +="R |";
+
+					} else {
+						s += "R |";
 					}
 				} else {
 					s += "O |";
@@ -130,13 +129,11 @@ public abstract class Environement extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+
 	public Agent getCase(CaseAgent ca) {
 		return grille[ca.getX()][ca.getY()];
 	}
-	
-	public abstract ArrayList<CaseAgent> caseAccesible(int x, int y);
 
-	
-	
+	public abstract ArrayList<CaseAgent> caseAccesible(int x, int y);
 
 }
