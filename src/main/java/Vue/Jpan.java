@@ -41,7 +41,7 @@ public class Jpan extends JPanel {
 				coorX += (int) sizeX;
 			}
 			for(int h = 0; h < env.getSizeY(); h++) {
-				g.drawLine(0, coorY, 500, coorY);
+				g.drawLine(0, coorY, env.getSizeY()*(int)sizeX, coorY);
 				coorY += (int) sizeY;
 			}
 			for (int i = 0; i < env.getSizeX(); i++) {

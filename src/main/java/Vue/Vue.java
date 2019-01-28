@@ -1,8 +1,8 @@
 package Vue;
 
-import java.awt.GraphicsEnvironment;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Properties;
 
 import javax.swing.JFrame;
 
@@ -11,18 +11,15 @@ import core.Environement;
 public class Vue extends JFrame implements Observer {
 	Jpan pan;
 	Environement env;
+	Properties prop;
 
-	public static void main(String[] args) {
-		new Vue();
-	}
-
-	public Vue() {
-
+	public Vue(Properties prop) {
+		this.prop = prop;
+		int pixelX = Integer.parseInt(prop.get("sizePixelX").toString());
+		int pixelY = Integer.parseInt(prop.get("sizePixelY").toString());
 		pan = new Jpan(env);
 		this.setTitle("SMA et c'est facile");
-//		GraphicsEnvironment.getLocalGraphicsEnvironment();
-//		this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_BOTH);
-		this.setSize(500, 500);
+		this.setSize(pixelX, pixelY);
 		this.setLocationRelativeTo(null);
 
 		this.setContentPane(pan);

@@ -30,7 +30,7 @@ public class App {
 		}
 		int nbTour = Integer.parseInt(prop.getProperty("nbTour"));
 		int delay = Integer.parseInt(prop.getProperty("delay"));
-		Vue vue = new Vue();
+		Vue vue = new Vue(prop);
 		Environement env;
 		int sizeX = Integer.parseInt(prop.getProperty("sizeX"));
 		int sizeY = Integer.parseInt(prop.getProperty("sizeY"));
