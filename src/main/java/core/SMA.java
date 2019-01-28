@@ -25,9 +25,7 @@ public class SMA {
 			Agent a = listeAgent.get(i);
 
 			a.decide();
-			if (a != grille[a.posX][a.posY]) {
-				System.out.println("Erreur");
-			}
+			
 
 		}
 

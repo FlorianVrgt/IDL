@@ -1,6 +1,6 @@
 sizeY=100
 sizeX=100
-nbShark=100
+nbShark=50
 nbFish=50
 nbTour=1000
 delay=50
