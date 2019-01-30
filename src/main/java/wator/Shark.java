@@ -25,7 +25,8 @@ public class Shark extends Carnivore {
 		sma.getAgentToAdd().add(s);
 		grille[x][y] = s;
 		if (this != grille[posX][posY]) {
-			//System.out.println("Erreur");
+
+			//System.out.println("Erreur dans shark");
 		}
 		energyCurrent = energieDefault;
 

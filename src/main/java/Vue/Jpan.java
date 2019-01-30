@@ -14,6 +14,7 @@ public class Jpan extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	Environement env;
+	Boolean grid;
 
 	public Environement getEnv() {
 		return env;
@@ -23,9 +24,10 @@ public class Jpan extends JPanel {
 		this.env = env;
 	}
 
-	public Jpan(Environement env) {
+	public Jpan(Environement env, Boolean grid) {
 		super();
 		this.env = env;
+		this.grid = grid;
 	}
 
 	@Override
@@ -36,13 +38,15 @@ public class Jpan extends JPanel {
 			double sizeY=this.getSize().getHeight()/env.getSizeY();
 			int coorX = 0;
 			int coorY = 0;
-			for(int w = 0; w < env.getSizeX(); w++) {
-				g.drawLine(coorX, 0, coorX, env.getSizeX()* (int)sizeY);
-				coorX += (int) sizeX;
-			}
-			for(int h = 0; h < env.getSizeY(); h++) {
-				g.drawLine(0, coorY, env.getSizeY()*(int)sizeX, coorY);
-				coorY += (int) sizeY;
+			if(this.grid) {
+				for(int w = 0; w < env.getSizeX(); w++) {
+					g.drawLine(coorX, 0, coorX, env.getSizeX()* (int)sizeY);
+					coorX += (int) sizeX;
+				}
+				for(int h = 0; h < env.getSizeY(); h++) {
+					g.drawLine(0, coorY, env.getSizeY()*(int)sizeX, coorY);
+					coorY += (int) sizeY;
+				}
 			}
 			for (int i = 0; i < env.getSizeX(); i++) {
 				for (int j = 0; j < env.getSizeY(); j++) {

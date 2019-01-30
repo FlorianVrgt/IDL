@@ -12,12 +12,19 @@ public class Vue extends JFrame implements Observer {
 	Jpan pan;
 	Environement env;
 	Properties prop;
+	Boolean grid;
 
 	public Vue(Properties prop) {
 		this.prop = prop;
 		int pixelX = Integer.parseInt(prop.get("sizePixelX").toString());
 		int pixelY = Integer.parseInt(prop.get("sizePixelY").toString());
-		pan = new Jpan(env);
+		if(prop.get("grille").toString().equals("true")) {
+			this.grid = true;
+		}
+		else {
+			this.grid = false;
+		}
+		pan = new Jpan(env,this.grid);
 		this.setTitle("SMA et c'est facile");
 		this.setSize(pixelX, pixelY);
 		this.setLocationRelativeTo(null);
