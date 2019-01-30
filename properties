@@ -7,4 +7,4 @@ nbFish=100
 nbTour=1000
 delay=500
 torique=true
-grille=false
+grille=true

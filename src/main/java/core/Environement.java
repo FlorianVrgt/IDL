@@ -32,7 +32,7 @@ public abstract class Environement extends Observable {
 
 		this.addObserver(vue);
 		if (nbFish + nbShark >= sizeX * sizeY) {
-			System.out.println("Erreur, trop d'agent");
+			System.out.println("Erreur, dans environemment");
 			System.exit(-1);
 		}
 
@@ -57,7 +57,7 @@ public abstract class Environement extends Observable {
 			listeAgent.add(a);
 			caseVide.remove(index);
 			if (a != grille[a.posX][a.posY]) {
-				System.out.println("Erreur");
+				System.out.println("Erreur dans environnement");
 			}
 		}
 

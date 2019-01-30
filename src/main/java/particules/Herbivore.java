@@ -53,7 +53,7 @@ public abstract class Herbivore extends Particules {
 			die();
 		}
 		if (this != grille[this.posX][this.posY]) {
-			System.out.println("Erreur");
+			System.out.println("Erreur dans herbivore");
 		}
 
 	}
