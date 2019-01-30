@@ -1,13 +1,10 @@
 package wator;
 
-import java.util.ArrayList;
-
 import SMA.SMA;
 import core.Agent;
 import core.CaseAgent;
 import core.Environement;
 import particules.Herbivore;
-import particules.Particules;
 
 public class Fish extends Herbivore {
 
