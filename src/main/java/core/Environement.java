@@ -57,7 +57,7 @@ public abstract class Environement extends Observable {
 			listeAgent.add(a);
 			caseVide.remove(index);
 			if (a != grille[a.posX][a.posY]) {
-				System.out.println("Erreur");
+			//	System.out.println("Erreur");
 			}
 		}
 
