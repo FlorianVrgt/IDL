@@ -26,7 +26,7 @@ public abstract class Herbivore extends Particules {
 		}
 		ArrayList<CaseAgent> caseDispo = env.caseAccesible(posX, posY);
 		ArrayList<CaseAgent> canMove = new ArrayList<>();
-		ArrayList<Agent> listCanEat = new ArrayList<>();
+		ArrayList<CaseAgent> listCanEat = new ArrayList<>();
 		coverCase(caseDispo, canMove, listCanEat);
 
 		if (canMove.size() >= 1) {
@@ -53,7 +53,7 @@ public abstract class Herbivore extends Particules {
 			die();
 		}
 		if (this != grille[this.posX][this.posY]) {
-			//System.out.println("Erreur dans herbivore");
+			System.out.println("Erreur dans herbivore");
 		}
 
 	}

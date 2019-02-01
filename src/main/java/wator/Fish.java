@@ -22,7 +22,7 @@ public class Fish extends Herbivore {
 		grille[x][y] = f;
 		currentGestation = 0;
 		if (this != grille[posX][posY]) {
-			//System.out.println("Erreur dans fish");
+			System.out.println("Erreur dans fish");
 		}
 
 	}

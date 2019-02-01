@@ -58,7 +58,7 @@ public abstract class Environement extends Observable {
 			caseVide.remove(index);
 			if (a != grille[a.posX][a.posY]) {
 
-				//System.out.println("Erreur dans environnement");
+				System.out.println("Erreur dans environnement");
 			}
 		}
 

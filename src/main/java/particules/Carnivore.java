@@ -33,25 +33,24 @@ public abstract class Carnivore extends Particules {
 		}
 		ArrayList<CaseAgent> caseDispo = env.caseAccesible(posX, posY);
 		ArrayList<CaseAgent> canMove = new ArrayList<>();
-		ArrayList<Agent> listCanEat = new ArrayList<>();
+		ArrayList<CaseAgent> listCanEat = new ArrayList<>();
 		coverCase(caseDispo, canMove, listCanEat);
 
 		if (listCanEat.size() >= 1) {
 			// System.out.println("eat");
-			Agent toMove = listCanEat.get((int) (Math.random() * listCanEat.size()));
-			int futx = toMove.getPosX();
-			int futy = toMove.getPosY();
-
+			CaseAgent toMove = listCanEat.get((int) (Math.random() * listCanEat.size()));
+			
+		env.getCase(toMove).die();
 			if (energyCurrent >= energyToReproduce) {
-				grille[futx][futy].die();
+				
 				int antx = posX;
 				int anty = posY;
-				move(posX, posY, futx, futy);
+				move(posX, posY, toMove.getX(), toMove.getY());
 				create(antx, anty);
 				energyCurrent = energieDefault;
 			} else {
-				grille[futx][futy].die();
-				move(posX, posY, futx, futy);
+				
+				move(posX, posY, toMove.getX(), toMove.getY());
 			}
 			energyCurrent++;
 		} else if (canMove.size() >= 1) {
