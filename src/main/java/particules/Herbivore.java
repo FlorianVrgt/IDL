@@ -49,12 +49,13 @@ public abstract class Herbivore extends Particules {
 		} else {
 			// System.out.println("case non accesible");
 		}
-		if (isMustDie()) {
-			die();
-		}
 		if (this != grille[this.posX][this.posY]) {
 			System.out.println("Erreur dans herbivore");
 		}
+		if (isMustDie()) {
+			die();
+		}
+		
 
 	}
 
