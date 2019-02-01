@@ -1,12 +1,13 @@
 package core;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
-import java.util.Random;
 
+import SMA.NonEquitable;
+import SMA.RdmEquitable;
 import SMA.SMA;
+import SMA.SequentielEquitable;
 import Vue.Vue;
 import wator.Fish;
 import wator.Shark;
@@ -41,7 +42,7 @@ public abstract class Environement extends Observable {
 				caseVide.add(new CaseAgent(i, j));
 			}
 		}
-		sma = new SMA(listeAgent, grille);
+		sma = new NonEquitable(listeAgent, grille);
 		for (int i = 0; i < nbAgent; i++) {
 			int index = (int) (Math.random() * caseVide.size());
 			System.out.println(index);

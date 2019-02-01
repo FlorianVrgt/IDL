@@ -7,7 +7,7 @@ import java.util.Observer;
 
 import core.Agent;
 
-public class SMA {
+public abstract class  SMA {
 	List<Agent> listeAgent;
 	List<Agent> agentToAdd;
 	public List<Agent> getAgentToAdd() {
@@ -38,15 +38,12 @@ public class SMA {
 		
 		// to del
 
-		for (int i = 0; i < listeAgent.size(); i++) {
-			Agent a = listeAgent.get(i);
-
-			a.decide();
-			
-
-		}
+		sequence();
 
 	}
+
+	protected abstract void sequence();
+		
 
 	public List<Agent> getListeAgent() {
 		return listeAgent;
