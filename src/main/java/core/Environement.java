@@ -49,10 +49,10 @@ public abstract class Environement extends Observable {
 			CaseAgent caseAgent = caseVide.get(index);
 
 			if (nbFish > 0) {
-				a = new Fish(caseAgent.getX(), caseAgent.getY(), grille, this, sma, 0, 3, false);
+				a = new Fish(caseAgent.getX(),caseAgent.getY(),grille,this,sma,false,0,3);
 				nbFish--;
 			} else {
-				a = new Shark(caseAgent.getX(), caseAgent.getY(), grille, this, sma, 10, -5, 2, 2, false);
+				a = new Shark(caseAgent.getX(), caseAgent.getY(), grille, this, sma,false, 10, -5, 2, 2 );
 			}
 			grille[caseAgent.getX()][caseAgent.getY()] = a;
 			listeAgent.add(a);
