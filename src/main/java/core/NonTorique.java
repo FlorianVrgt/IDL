@@ -10,6 +10,11 @@ public class NonTorique extends Environement {
 		super(sizeX, sizeY, nbFish, nbShark, vue);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public NonTorique(int sizeX, int sizeY, int nbBille, Vue vue) {
+		super(sizeX, sizeY, nbBille, vue);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public ArrayList<CaseAgent> caseAccesible(int x, int y) {

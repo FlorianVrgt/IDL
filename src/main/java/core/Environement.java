@@ -9,6 +9,7 @@ import SMA.RdmEquitable;
 import SMA.SMA;
 import SMA.SequentielEquitable;
 import Vue.Vue;
+import particules.Bille;
 import wator.Fish;
 import wator.Shark;
 
@@ -61,6 +62,43 @@ public abstract class Environement extends Observable {
 
 				System.out.println("Erreur dans environnement");
 			}
+		}
+
+	}
+	
+	public Environement(int sizeX, int sizeY, int nbBille, Vue vue) {
+		die = 0;
+		ArrayList<CaseAgent> caseVide = new ArrayList<CaseAgent>();
+		listeAgent = new ArrayList<Agent>();
+		grille = new Agent[sizeX][sizeY];
+		Agent a = null;
+		this.sizeX = sizeX;
+		this.sizeY = sizeY;
+
+		this.addObserver(vue);
+		if (nbBille >= sizeX * sizeY) {
+			//System.out.println("Erreur, dans environemment");
+			System.exit(-1);
+		}
+
+		for (int i = 0; i < sizeX; i++) {
+			for (int j = 0; j < sizeY; j++) {
+				caseVide.add(new CaseAgent(i, j));
+			}
+		}
+		sma = new NonEquitable(listeAgent, grille);
+		for (int i = 0; i < nbBille; i++) {
+			int index = (int) (Math.random() * caseVide.size());
+			System.out.println(index);
+			CaseAgent caseAgent = caseVide.get(index);
+
+			if (nbBille > 0) {
+				a = new Bille(caseAgent.getX(),caseAgent.getY(),grille,this,sma,false);
+				nbBille--;
+			}
+			grille[caseAgent.getX()][caseAgent.getY()] = a;
+			listeAgent.add(a);
+			caseVide.remove(index);
 		}
 
 	}
