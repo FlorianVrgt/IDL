@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import core.Environement;
+import particules.Bille;
 import wator.*;
 
 public class Jpan extends JPanel {
@@ -51,6 +52,10 @@ public class Jpan extends JPanel {
 			for (int i = 0; i < env.getSizeX(); i++) {
 				for (int j = 0; j < env.getSizeY(); j++) {
 					if (env.getGrille()[i][j] != null) {
+						if(env.getGrille()[i][j].getClass() == Bille.class) {
+							g.setColor(new Color(0,0,0));
+							g.fillOval(i*((int)sizeX),j*((int)sizeY), ((int)sizeX), ((int)sizeY));
+						}
 						if(env.getGrille()[i][j].getClass() == Fish.class) {
 							if(env.getGrille()[i][j].getBorn()) {
 								g.setColor(new Color(255,255,0));
@@ -60,7 +65,7 @@ public class Jpan extends JPanel {
 							}
 							g.fillOval(i*((int)sizeX),j*((int)sizeY), ((int)sizeX), ((int)sizeY));
 						}
-						else {
+						if(env.getGrille()[i][j].getClass() == Shark.class) {
 							if(env.getGrille()[i][j].getBorn()) {
 								g.setColor(new Color(255,50,250));
 							}

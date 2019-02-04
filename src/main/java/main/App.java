@@ -38,8 +38,10 @@ public class App {
 		int nbShark = Integer.parseInt(prop.getProperty("nbShark"));
 		if (Boolean.parseBoolean(prop.getProperty("torique"))) {
 			env = new Torique(sizeX, sizeY, nbFish, nbShark, vue);
+			env = new Torique(sizeX, sizeY, nbFish, vue);
 		} else {
 			env = new NonTorique(sizeX, sizeY, nbFish, nbShark, vue);
+			env = new NonTorique(sizeX, sizeY, nbFish, vue);
 		}
 		for (int i = 0; i < nbTour; i++) {
 			env.step();
