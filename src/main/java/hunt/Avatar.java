@@ -1,10 +1,13 @@
 package hunt;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import SMA.SMA;
 import core.Agent;
 import core.Environement;
 
-public class Avatar extends Agent{
+public class Avatar extends Agent implements KeyListener{
 int pasX, pasY; 
 
 	public Avatar(int posX, int posY, Agent[][] grille, Environement env, SMA sma, Boolean born) {
@@ -38,6 +41,44 @@ int pasX, pasY;
 	public Boolean getBorn() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		char c = e.getKeyChar();
+		switch (c) {
+        case 'z':  
+        	pasY=1;
+        	pasX=0;
+            break;
+        case 'd':  
+        	pasY=0;
+        	pasX=1;
+            break;
+        case 'q':  
+        	pasY=0;
+        	pasX=-1;
+            break;
+        case 's':  
+        	pasY=-1;
+        	pasX=0;
+            break;
+      
+        default: 
+                 break;
+    }
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
