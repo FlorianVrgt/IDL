@@ -62,6 +62,12 @@ public class App {
 				writer.close();
 
 				env.step();
+				try {
+					Thread.sleep(delay);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 			}
 		} catch (Exception e) {

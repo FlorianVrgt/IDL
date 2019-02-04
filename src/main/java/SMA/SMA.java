@@ -34,7 +34,7 @@ public abstract class  SMA {
 		}
 		agentToAdd.clear();
 		int size = listeAgent.size();
-		System.out.println("nbAgent" + size);
+//		System.out.println("nbAgent" + size);
 		
 		// to del
 		

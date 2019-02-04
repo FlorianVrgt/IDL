@@ -11,6 +11,6 @@ bille=true
 nbBille=5
 
 nbTour=1000
-delay=1000
+delay=500
 torique=true
 grille=true
