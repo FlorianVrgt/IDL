@@ -34,7 +34,7 @@ public abstract class Environement extends Observable {
 
 		this.addObserver(vue);
 		if (nbFish + nbShark >= sizeX * sizeY) {
-			//System.out.println("Erreur, dans environemment");
+			// System.out.println("Erreur, dans environemment");
 			System.exit(-1);
 		}
 
@@ -50,10 +50,10 @@ public abstract class Environement extends Observable {
 			CaseAgent caseAgent = caseVide.get(index);
 
 			if (nbFish > 0) {
-				a = new Fish(caseAgent.getX(),caseAgent.getY(),grille,this,sma,false,0,3);
+				a = new Fish(caseAgent.getX(), caseAgent.getY(), grille, this, sma, false, 0, 3);
 				nbFish--;
 			} else {
-				a = new Shark(caseAgent.getX(), caseAgent.getY(), grille, this, sma,false, 10, -5, 2, 2 );
+				a = new Shark(caseAgent.getX(), caseAgent.getY(), grille, this, sma, false, 10, -5, 2, 2);
 			}
 			grille[caseAgent.getX()][caseAgent.getY()] = a;
 			listeAgent.add(a);
@@ -65,7 +65,7 @@ public abstract class Environement extends Observable {
 		}
 
 	}
-	
+
 	public Environement(int sizeX, int sizeY, int nbBille, Vue vue) {
 		die = 0;
 		ArrayList<CaseAgent> caseVide = new ArrayList<CaseAgent>();
@@ -77,7 +77,6 @@ public abstract class Environement extends Observable {
 
 		this.addObserver(vue);
 		if (nbBille >= sizeX * sizeY) {
-			//System.out.println("Erreur, dans environemment");
 			System.exit(-1);
 		}
 
@@ -86,16 +85,13 @@ public abstract class Environement extends Observable {
 				caseVide.add(new CaseAgent(i, j));
 			}
 		}
-		sma = new NonEquitable(listeAgent, grille);
+//		sma = new NonEquitable(listeAgent, grille);
+		sma = new SequentielEquitable(listeAgent, grille);
 		for (int i = 0; i < nbBille; i++) {
 			int index = (int) (Math.random() * caseVide.size());
-			System.out.println(index);
 			CaseAgent caseAgent = caseVide.get(index);
 
-			if (nbBille > 0) {
-				a = new Bille(caseAgent.getX(),caseAgent.getY(),grille,this,sma,false);
-				nbBille--;
-			}
+			a = new Bille(caseAgent.getX(), caseAgent.getY(), grille, this, sma, false);
 			grille[caseAgent.getX()][caseAgent.getY()] = a;
 			listeAgent.add(a);
 			caseVide.remove(index);

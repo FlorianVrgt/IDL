@@ -3,6 +3,8 @@ package particules;
 import SMA.SMA;
 import core.Agent;
 import core.Environement;
+import core.NonTorique;
+import core.Torique;
 
 public class Bille extends Agent{
 
@@ -17,30 +19,47 @@ public class Bille extends Agent{
 
 	@Override
 	public void decide() {
-		System.out.println("le pas " + pasX);
 		int newPoseX = posX+pasX;
 		int newPoseY = posY+pasY;
+		
+		int toriqueX;
+		int toriqueY;
 
 		// gestion du mur 
-		if(newPoseX<0) {
-			pasX=1;
-			newPoseX=posX;
+		if(env.getClass() == NonTorique.class) {
+			if(newPoseX<0) {
+				pasX=1;
+				newPoseX=posX;
+			}
+			if(newPoseY<0) {
+				pasY=1;
+				newPoseY=posY;
+			}
+			if(newPoseY>=tailleY) {
+				pasY=-1;
+				newPoseY=posY;
+	
+			}
+			if(newPoseX>=tailleX) {
+				pasX=-1;
+				newPoseX=posX;
+			}
 		}
-		if(newPoseY<0) {
-			pasY=1;
-			newPoseY=posY;
-		}
-		if(newPoseY>=tailleY) {
-			pasY=-1;
-			newPoseY=posY;
-
-		}
-		if(newPoseX>=tailleX) {
-			pasX=-1;
-			newPoseX=posX;
+		else {
+			if(newPoseX<0) {
+				newPoseX=tailleX-1;
+			}
+			if(newPoseY<0) {
+				newPoseY=tailleY-1;
+			}
+			if(newPoseY>=tailleY) {
+				newPoseY=0;
+			}
+			if(newPoseX>=tailleX) {
+				newPoseX=0;
+			}
 		}
 		Agent a = grille[newPoseX][newPoseY];
-		System.out.println("pos : " + posX + " " + posY + " newpos : " + newPoseX + " " + newPoseY);
 		if(a==null) {
 			move(posX,posY,newPoseX,newPoseY);
 		}
@@ -56,7 +75,7 @@ public class Bille extends Agent{
 			System.out.println("Erreur");
 		}
 		// System.out.println("x:"+x+" y:"+y+"futx:"+futx+"futy: "+futy);
-		System.out.println(env.caseAccesible(x, y));
+//		System.out.println(env.caseAccesible(x, y));
 		grille[futx][futy] = this;
 		grille[x][y] = null;
 		posX = futx;
