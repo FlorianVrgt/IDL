@@ -22,7 +22,7 @@ public class Hunter extends Agent{
 			for (int j = 0; j < env.getSizeY(); j++) {
 				caseAccesible= env.caseAccesible(i, j);
 				 Node n = new Node(String.valueOf(i)+String.valueOf(j));
-				
+				//n.addDestination(destination, distance);
 			}
 			
 		}
@@ -31,7 +31,7 @@ public class Hunter extends Agent{
 
 	@Override
 	public void decide() {
-		Dijkstra dij = dij.getPath(grille, 0, 10);
+		
 		
 	}
 
