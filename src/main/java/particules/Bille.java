@@ -8,17 +8,22 @@ import core.Torique;
 
 public class Bille extends Agent{
 
-	protected int pasX=(int) Math.random()*3-1;
-	protected int pasY=(int) Math.random()*3-1;
+	protected int pasX;
+	protected int pasY;
 	private int tailleX = env.getSizeX();
 	private int tailleY = env.getSizeY();
 	
 	public Bille(int posX, int posY, Agent[][] grille, Environement env, SMA sma, Boolean born) {
 		super(posX, posY, grille, env, sma, born);
+		pasX=(int) (Math.random()*3)-1;
+		pasY= (int) (Math.random()*3)-1;
+		
+		
 	}
 
 	@Override
 	public void decide() {
+		
 		int newPoseX = posX+pasX;
 		int newPoseY = posY+pasY;
 		
