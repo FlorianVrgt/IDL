@@ -1,6 +1,9 @@
 package main;
 
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -41,17 +44,24 @@ public class App {
 		} else {
 			env = new NonTorique(sizeX, sizeY, nbFish, nbShark, vue);
 		}
-		for (int i = 0; i < nbTour; i++) {
-			env.step();
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter("result.txt", false));
+			writer.newLine();
+			for (int i = 0; i < nbTour; i++) {
 
-			try {
+				writer = new BufferedWriter(new FileWriter("result.csv", true));
+				writer.append(i + "," + env.getListeAgent().size() + ";\n");
+
+				writer.close();
+
+				env.step();
+
 				Thread.sleep(delay);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
 	}
 }

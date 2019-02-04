@@ -1,9 +1,9 @@
 package SMA;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 import core.Agent;
 
@@ -37,6 +37,7 @@ public abstract class  SMA {
 		System.out.println("nbAgent" + size);
 		
 		// to del
+		
 
 		sequence();
 

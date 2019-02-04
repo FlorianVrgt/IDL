@@ -81,5 +81,19 @@ public abstract class Agent {
 
 	public abstract Boolean getBorn();
 
+	public void move(int x, int y, int futx, int futy) {
+		if (this != grille[posX][posY]) {
+			System.out.println("Erreur");
+		}
+		// System.out.println("x:"+x+" y:"+y+"futx:"+futx+"futy: "+futy);
+		grille[futx][futy] = this;
+		grille[x][y] = null;
+		posX = futx;
+		posY = futy;
+		if (this != grille[posX][posY]) {
+			System.out.println("Erreur move");
+		}
+	}
+
 
 }

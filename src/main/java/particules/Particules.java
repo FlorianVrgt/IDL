@@ -17,20 +17,7 @@ public abstract class Particules extends Agent {
 	/*
 	 * déplace l'agent en futx, futy et actualise ces coordonées
 	 */
-	public void move(int x, int y, int futx, int futy) {
-		if (this != grille[posX][posY]) {
-			System.out.println("Erreur");
-		}
-		// System.out.println("x:"+x+" y:"+y+"futx:"+futx+"futy: "+futy);
-		grille[futx][futy] = this;
-		grille[x][y] = null;
-		posX = futx;
-		posY = futy;
-		if (this != grille[posX][posY]) {
-			System.out.println("Erreur move");
-		}
-	}
-
+	
 	public abstract boolean canEat(CaseAgent ca);
 
 	public abstract void create(int x, int y);

@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.Observable;
 
 import SMA.NonEquitable;
-import SMA.RdmEquitable;
 import SMA.SMA;
-import SMA.SequentielEquitable;
 import Vue.Vue;
 import particules.Bille;
 import wator.Fish;
