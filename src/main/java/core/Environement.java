@@ -8,6 +8,8 @@ import SMA.NonEquitable;
 import SMA.SMA;
 import SMA.SequentielEquitable;
 import Vue.Vue;
+import hunt.Avatar;
+import hunt.Hunter;
 import particules.Bille;
 import wator.Fish;
 import wator.Shark;
@@ -97,6 +99,49 @@ public abstract class Environement extends Observable {
 		}
 
 	}
+	
+	
+	public Environement(int sizeX, int sizeY, int nbHunt, Vue vue, int difficulte) {
+		die = 0;
+		ArrayList<CaseAgent> caseVide = new ArrayList<CaseAgent>();
+		listeAgent = new ArrayList<Agent>();
+		grille = new Agent[sizeX][sizeY];
+		Agent a = null;
+		this.sizeX = sizeX;
+		this.sizeY = sizeY;
+
+		this.addObserver(vue);
+		if (nbHunt+1 >= sizeX * sizeY) {
+			System.exit(-1);
+		}
+
+		for (int i = 0; i < sizeX; i++) {
+			for (int j = 0; j < sizeY; j++) {
+				caseVide.add(new CaseAgent(i, j));
+			}
+		}
+//		sma = new NonEquitable(listeAgent, grille);
+		sma = new SequentielEquitable(listeAgent, grille);
+		for (int i = 0; i < nbHunt; i++) {
+			int index = (int) (Math.random() * caseVide.size());
+			CaseAgent caseAgent = caseVide.get(index);
+
+			a = new Hunter(caseAgent.getX(), caseAgent.getY(), grille, this, sma, false);
+			grille[caseAgent.getX()][caseAgent.getY()] = a;
+			listeAgent.add(a);
+			caseVide.remove(index);
+		}
+		int index = (int) (Math.random() * caseVide.size());
+		CaseAgent caseAgent = caseVide.get(index);
+
+		a = new Avatar(caseAgent.getX(), caseAgent.getY(), grille, this, sma, false);
+		grille[caseAgent.getX()][caseAgent.getY()] = a;
+		listeAgent.add(a);
+		caseVide.remove(index);
+
+	}
+	
+
 
 	public Agent[][] getGrille() {
 		return grille;

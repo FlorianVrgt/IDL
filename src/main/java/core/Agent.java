@@ -16,6 +16,7 @@ public abstract class Agent {
 		this.env = env;
 		this.sma = sma;
 		this.posX = posX;
+		this.tabDijsktra= new int[env.getSizeX()][env.getSizeY()];
 	}
 	
 	protected int posX;
@@ -25,6 +26,7 @@ public abstract class Agent {
 	protected Agent grille[][];
 	protected Environement env;
 	protected SMA sma;
+	protected int[][] tabDijsktra;
 
 	public SMA getSma() {
 		return sma;
@@ -93,6 +95,54 @@ public abstract class Agent {
 		if (this != grille[posX][posY]) {
 			System.out.println("Erreur move");
 		}
+	}
+	
+	protected void dijstra(CaseAgent ca, int numb) {
+		
+		ArrayList<CaseAgent> listAgent ;
+		if (tabDijsktra[ca.getX()][ca.getY()] == 0) {
+			listAgent= env.caseAccesible(ca.getX(), ca.getY());
+			// case jamais parcouru
+			tabDijsktra[ca.getX()][ca.getY()] = numb;
+			for (CaseAgent caseAgent : listAgent) {
+				afficherTab();
+				dijstra(caseAgent, numb + 1);
+			
+			}
+
+		} else if (tabDijsktra[ca.getX()][ca.getY()] > numb) {
+			tabDijsktra[ca.getX()][ca.getY()]=numb;
+			// meilleur chemin
+			listAgent= env.caseAccesible(ca.getX(), ca.getY());
+			for (CaseAgent caseAgent : listAgent) {
+				dijstra(caseAgent, numb + 1);
+			}
+		}
+		
+	}
+	public void afficherTab() {
+		for (int i = 0; i < env.getSizeX(); i++) {
+			for (int j = 0; j < env.getSizeY(); j++) {
+				System.out.print(tabDijsktra[i][j]+" |");
+			}
+			System.out.print("\n");
+		}
+		System.out.println();
+	}
+	
+	public CaseAgent goTo() {
+		
+		 ArrayList<CaseAgent> listAgent= env.caseAccesible(posX,posY);
+		 CaseAgent result=null;
+		 int plusPettit=Integer.MAX_VALUE;
+		 for (CaseAgent ca: listAgent) {
+			if(tabDijsktra[ca.getX()][ca.getY()]<plusPettit) {
+				plusPettit= tabDijsktra[ca.getX()][ca.getY()];
+				result =ca;
+			}
+		}
+		 return result;
+
 	}
 
 

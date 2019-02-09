@@ -20,6 +20,7 @@ public class App {
 	public static void main(String[] args) {
 		final Properties prop = new Properties();
 		InputStream input = null;
+		
 		try {
 			input = new FileInputStream("properties");
 			prop.load(input);
@@ -27,21 +28,23 @@ public class App {
 			e.printStackTrace();
 		}
 		Vue vue = new Vue(prop);
-		Environement env;
+		Environement env=null;
 
 		int nbTour = Integer.parseInt(prop.getProperty("nbTour"));
 		int delay = Integer.parseInt(prop.getProperty("delay"));
 		int sizeX = Integer.parseInt(prop.getProperty("sizeX"));
 		int sizeY = Integer.parseInt(prop.getProperty("sizeY"));
 
-		if (Boolean.parseBoolean(prop.getProperty("bille"))) {
+		if(prop.getProperty("type").equals("Bille"))  {
 			int nbBille = Integer.parseInt(prop.getProperty("nbBille"));
 			if (Boolean.parseBoolean(prop.getProperty("torique"))) {
 				env = new Torique(sizeX, sizeY, nbBille, vue);
 			} else {
 				env = new NonTorique(sizeX, sizeY, nbBille, vue);
 			}
-		} else {
+		} 
+		
+		if(prop.getProperty("type").equals("Wator")) {
 			int nbFish = Integer.parseInt(prop.getProperty("nbFish"));
 			int nbShark = Integer.parseInt(prop.getProperty("nbShark"));
 			if (Boolean.parseBoolean(prop.getProperty("torique"))) {
@@ -50,9 +53,19 @@ public class App {
 				env = new NonTorique(sizeX, sizeY, nbFish, nbShark, vue);
 			}
 		}
+		if(prop.getProperty("type").equals("Hunter")) {
+			int nbHunter = Integer.parseInt(prop.getProperty("nbHunter"));
+			int difficulte = Integer.parseInt(prop.getProperty("difficulte"));
+			
+			if (Boolean.parseBoolean(prop.getProperty("torique"))) {
+				env = new Torique(sizeX, sizeY,1,vue,1);
+			} else {
+				env = new NonTorique(sizeX, sizeY, nbHunter,vue,difficulte);
+			}
+		}
 
 		try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter("result.txt", false));
+			BufferedWriter writer = new BufferedWriter(new FileWriter("result.csv", false));
 			writer.newLine();
 			for (int i = 0; i < nbTour; i++) {
 

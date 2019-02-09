@@ -4,58 +4,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.xml.soap.Node;
-
 import SMA.SMA;
 import core.Agent;
 import core.CaseAgent;
 import core.Environement;
-import main.Dijkstra;
-import main.WeightedGraph;
 
 public class Hunter extends Agent {
 	int pasX, pasY;
-	WeightedGraph g;
-	HashMap<String, Node> nodes;
+
+	
 
 	public Hunter(int posX, int posY, Agent[][] grille, Environement env, SMA sma, Boolean born) {
 		super(posX, posY, grille, env, sma, born);
-
-		List<CaseAgent> caseAccesible = new ArrayList<CaseAgent>();
-		nodes = new HashMap<String, Node>();
-		g = new WeightedGraph(0);
-
-		for (int i = 0; i < env.getSizeX(); i++) {
-			for (int j = 0; j < env.getSizeY(); j++) {
-
-				g.setLabel(Integer.parseInt(toStr(i, j)), toStr(i, j));
-			}
-
-		}
-
-		for (int i = 0; i < env.getSizeX(); i++) {
-			for (int j = 0; j < env.getSizeY(); j++) {
-
-				caseAccesible = env.caseAccesible(i, j);
-				for (CaseAgent ca : caseAccesible) {
-					int node1 = Integer.parseInt(toStr(i, j));
-					int node2 = Integer.parseInt(toStr(ca.getX(), ca.getY()));
-					g.addEdge(node1, node2, 1);
-				}
-			}
-
-		}
-
-	}
-
-	protected String toStr(int i, int j) {
-		return String.valueOf(i) + String.valueOf(j);
 	}
 
 	@Override
 	public void decide() {
 		CaseAgent ca = goTo();
+		
 		move(posX, posY, ca.getX(), ca.getY());
+		
 	}
 
 	@Override
@@ -64,13 +32,9 @@ public class Hunter extends Agent {
 		return false;
 	}
 
-	public CaseAgent goTo() {
-		return null;
-//		int[] tab= Dijkstra.dijkstra(g, Integer.parseInt(toStr(posX, posY)));
-//		Dijkstra.printPath(g, tab, Integer.parseInt(toStr(posX, posY)), Integer.parseInt(toStr(posX, posY)));
-//		
-		
-	}
+	
+
+
 
 	@Override
 	public void die() {
@@ -83,5 +47,7 @@ public class Hunter extends Agent {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 
 }

@@ -15,6 +15,11 @@ public class Torique extends Environement {
 		super(sizeX, sizeY, nbBille, vue);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Torique(int sizeX, int sizeY, int nbHunt, Vue vue,int difficulte) {
+		super(sizeX, sizeY, nbHunt, vue,1);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public ArrayList<CaseAgent> caseAccesible(int x, int y) {

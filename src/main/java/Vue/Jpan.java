@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import core.Environement;
+import hunt.Avatar;
+import hunt.Hunter;
 import particules.Bille;
 import wator.*;
 
@@ -53,6 +55,14 @@ public class Jpan extends JPanel {
 				for (int j = 0; j < env.getSizeY(); j++) {
 					if (env.getGrille()[i][j] != null) {
 						if(env.getGrille()[i][j].getClass() == Bille.class) {
+							g.setColor(new Color(0,0,0));
+							g.fillOval(i*((int)sizeX),j*((int)sizeY), ((int)sizeX), ((int)sizeY));
+						}
+						if(env.getGrille()[i][j].getClass() == Hunter.class) {
+							g.setColor(new Color(255,0,0));
+							g.fillOval(i*((int)sizeX),j*((int)sizeY), ((int)sizeX), ((int)sizeY));
+						}
+						if(env.getGrille()[i][j].getClass() == Avatar.class) {
 							g.setColor(new Color(0,0,0));
 							g.fillOval(i*((int)sizeX),j*((int)sizeY), ((int)sizeX), ((int)sizeY));
 						}

@@ -5,6 +5,7 @@ import java.awt.event.KeyListener;
 
 import SMA.SMA;
 import core.Agent;
+import core.CaseAgent;
 import core.Environement;
 
 public class Avatar extends Agent implements KeyListener{
@@ -13,6 +14,8 @@ int pasX, pasY;
 	public Avatar(int posX, int posY, Agent[][] grille, Environement env, SMA sma, Boolean born) {
 		super(posX, posY, grille, env, sma, born);
 		// TODO Auto-generated constructor stub
+		pasX=0;
+		pasY=1;
 	}
 
 	@Override
@@ -20,8 +23,10 @@ int pasX, pasY;
 		
 	int i = posX+pasX;
 	int j= posY+pasY;
-		if (i >= 0 && j >= 0 && i < env.getSizeX() && j < env.getSizeY())
-		move(posX, posY, pasX, pasY);
+//		if (i >= 0 && j >= 0 && i < env.getSizeX() && j < env.getSizeY())
+//			move(posX, posY, pasX, pasY);
+		tabDijsktra= new int[env.getSizeX()][env.getSizeY()];
+		 dijstra(new CaseAgent(this.posX, this.posY),1);
 		
 	}
 
