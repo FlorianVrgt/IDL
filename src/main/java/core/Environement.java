@@ -21,9 +21,11 @@ public abstract class Environement extends Observable {
 	protected int sizeY;
 	protected SMA sma;
 	public int die;
+	public Vue vue;
 	protected List<Agent> listeAgent;
 
 	public Environement(int sizeX, int sizeY, int nbFish, int nbShark, Vue vue) {
+		this.vue=vue;
 		die = 0;
 		ArrayList<CaseAgent> caseVide = new ArrayList<CaseAgent>();
 		listeAgent = new ArrayList<Agent>();
@@ -68,6 +70,7 @@ public abstract class Environement extends Observable {
 	}
 
 	public Environement(int sizeX, int sizeY, int nbBille, Vue vue) {
+		this.vue=vue;
 		die = 0;
 		ArrayList<CaseAgent> caseVide = new ArrayList<CaseAgent>();
 		listeAgent = new ArrayList<Agent>();
@@ -102,6 +105,7 @@ public abstract class Environement extends Observable {
 	
 	
 	public Environement(int sizeX, int sizeY, int nbHunt, Vue vue, int difficulte) {
+		this.vue=vue;
 		die = 0;
 		ArrayList<CaseAgent> caseVide = new ArrayList<CaseAgent>();
 		listeAgent = new ArrayList<Agent>();

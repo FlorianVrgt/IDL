@@ -1,5 +1,8 @@
 package Vue;
 
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Properties;
@@ -8,7 +11,7 @@ import javax.swing.JFrame;
 
 import core.Environement;
 
-public class Vue extends JFrame implements Observer {
+public class Vue extends JFrame implements Observer  {
 	Jpan pan;
 	Environement env;
 	Properties prop;
@@ -28,10 +31,12 @@ public class Vue extends JFrame implements Observer {
 		this.setTitle("SMA et c'est facile");
 		this.setSize(pixelX, pixelY);
 		this.setLocationRelativeTo(null);
+		this.setFocusable(true);
 
 		this.setContentPane(pan);
 		this.setVisible(true);
 		this.repaint();
+	
 	}
 
 	@Override

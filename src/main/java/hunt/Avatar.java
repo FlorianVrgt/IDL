@@ -19,6 +19,7 @@ private int[][] tabDijsktra;
 		pasX=0;
 		pasY=1;
 		this.tabDijsktra= new int[env.getSizeX()][env.getSizeY()];
+		this.env.vue.addKeyListener(this);
 	}
 
 	@Override
@@ -81,30 +82,7 @@ private int[][] tabDijsktra;
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println("toucchessss");
-		char c = e.getKeyChar();
-		switch (c) {
-        case 'z':  
-        	pasY=1;
-        	pasX=0;
-            break;
-        case 'd':  
-        	pasY=0;
-        	pasX=1;
-            break;
-        case 'q':  
-        	pasY=0;
-        	pasX=-1;
-            break;
-        case 's':  
-        	pasY=-1;
-        	pasX=0;
-            break;
-      
-        default: 
-                 break;
-    }
-		
+	
 		
 	}
 
