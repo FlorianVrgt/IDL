@@ -24,10 +24,11 @@ private int[][] tabDijsktra;
 
 	@Override
 	public void decide() {
-		
+		System.out.println("pasX: "+pasX+" pasY: "+pasY);
 	int i = posX+pasX;
 	int j= posY+pasY;
-		if (i >= 0 && j >= 0 && i < env.getSizeX() && j < env.getSizeY())
+	
+		if (i >= 0 && j >= 0 && i < env.getSizeX() && j < env.getSizeY() &&( grille[i][j]==null || !grille[i][j].getClass().equals(Wall.class)))
 			move(posX, posY, posX+pasX, posY+pasY);
 		setTabDijsktra(new int[env.getSizeX()][env.getSizeY()]);
 		 dijstra(new CaseAgent(this.posX, this.posY),1);
@@ -54,29 +55,56 @@ private int[][] tabDijsktra;
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		System.out.println("toucchessss");
+	
 		char c = e.getKeyChar();
+		System.out.println(c);
 		switch (c) {
         case 'z':  
-        	pasY=1;
+        	pasY=-1;
         	pasX=0;
+        	
             break;
         case 'd':  
+        
         	pasY=0;
         	pasX=1;
             break;
         case 'q':  
+        	
         	pasY=0;
         	pasX=-1;
             break;
         case 's':  
-        	pasY=-1;
+        	pasY=1;
         	pasX=0;
+        	
+            break;
+        case 'a':  
+        	pasY=-1;
+        	pasX=-1;
+        	
+            break;
+        case 'e':  
+        	
+        	pasY=-1;
+        	pasX=1;
+        	
+            break;
+        case 'w':  
+        	pasY=1;
+        	pasX=-1;
+        	
+            break;
+        case 'c':  
+        	pasY=1;
+        	pasX=1;
+        	
             break;
       
         default: 
                  break;
     }
+		System.out.println("pasX: "+pasX+"pasY: "+pasY);
 		
 	}
 

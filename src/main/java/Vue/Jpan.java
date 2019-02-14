@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import core.Environement;
 import hunt.Avatar;
 import hunt.Hunter;
+import hunt.Wall;
 import particules.Bille;
 import wator.*;
 
@@ -64,6 +65,10 @@ public class Jpan extends JPanel {
 						}
 						if(env.getGrille()[i][j].getClass() == Avatar.class) {
 							g.setColor(new Color(0,0,0));
+							g.fillOval(i*((int)sizeX),j*((int)sizeY), ((int)sizeX), ((int)sizeY));
+						}
+						if(env.getGrille()[i][j].getClass() == Wall.class) {
+							g.setColor(new Color(172,172,172));
 							g.fillOval(i*((int)sizeX),j*((int)sizeY), ((int)sizeX), ((int)sizeY));
 						}
 						if(env.getGrille()[i][j].getClass() == Fish.class) {

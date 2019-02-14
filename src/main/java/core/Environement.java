@@ -10,6 +10,7 @@ import SMA.SequentielEquitable;
 import Vue.Vue;
 import hunt.Avatar;
 import hunt.Hunter;
+import hunt.Wall;
 import particules.Bille;
 import wator.Fish;
 import wator.Shark;
@@ -104,7 +105,7 @@ public abstract class Environement extends Observable {
 	}
 	
 	
-	public Environement(int sizeX, int sizeY, int nbHunt, Vue vue, int difficulte) {
+	public Environement(int sizeX, int sizeY, int nbHunt, Vue vue, int difficulte, int nbWall) {
 		this.vue=vue;
 		die = 0;
 		ArrayList<CaseAgent> caseVide = new ArrayList<CaseAgent>();
@@ -140,6 +141,16 @@ public abstract class Environement extends Observable {
 			 caseAgent = caseVide.get(index);
 
 			a = new Hunter(caseAgent.getX(), caseAgent.getY(), grille, this, sma, false,avatar);
+			grille[caseAgent.getX()][caseAgent.getY()] = a;
+			listeAgent.add(a);
+			caseVide.remove(index);
+		}
+		
+		for (int i = 0; i < nbWall; i++) {
+			 index = (int) (Math.random() * caseVide.size());
+			 caseAgent = caseVide.get(index);
+
+			a = new Wall(caseAgent.getX(), caseAgent.getY(), grille, this, sma, false);
 			grille[caseAgent.getX()][caseAgent.getY()] = a;
 			listeAgent.add(a);
 			caseVide.remove(index);

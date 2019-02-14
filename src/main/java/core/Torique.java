@@ -3,6 +3,7 @@ package core;
 import java.util.ArrayList;
 
 import Vue.Vue;
+import hunt.Wall;
 
 public class Torique extends Environement {
 
@@ -16,8 +17,8 @@ public class Torique extends Environement {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Torique(int sizeX, int sizeY, int nbHunt, Vue vue,int difficulte) {
-		super(sizeX, sizeY, nbHunt, vue,1);
+	public Torique(int sizeX, int sizeY, int nbHunt, Vue vue,int difficulte, int nbWall) {
+		super(sizeX, sizeY, nbHunt, vue,1,nbWall);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -27,11 +28,17 @@ public class Torique extends Environement {
 
 		for (int i = x - 1; i <= x + 1; i++) {
 			for (int j = y - 1; j <= y + 1; j++) {
-
-				ca.add(new CaseAgent(Math.floorMod(i, this.sizeX), Math.floorMod(j, this.sizeY)));
-
+				int cX= Math.floorMod(i, this.sizeX);
+				int cY = Math.floorMod(j, this.sizeY);
+				
+				if(grille[cX][cY]==null || !grille[cX][cY].getClass().equals(Wall.class))
+					ca.add(new CaseAgent(cX, cY));
+				
 			}
 		}
+		
+			
+		
 		// System.out.println(ca);
 		// System.out.println("nb case acces"+ca.size());
 		return ca;

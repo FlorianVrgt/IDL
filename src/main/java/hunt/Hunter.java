@@ -22,7 +22,7 @@ public class Hunter extends Agent {
 	@Override
 	public void decide() {
 		avatar.dijstra(new CaseAgent(avatar.getPosX(), avatar.getPosY()), 1);
-		avatar.afficherTab();
+		//avatar.afficherTab();
 		CaseAgent ca = goTo(avatar);
 		if(env.getCase(ca)!=null && env.getCase(ca).getClass().equals(Avatar.class))
 			System.out.println("Loooose");

@@ -3,6 +3,7 @@ package core;
 import java.util.ArrayList;
 
 import Vue.Vue;
+import hunt.Wall;
 
 public class NonTorique extends Environement {
 
@@ -16,8 +17,8 @@ public class NonTorique extends Environement {
 		// TODO Auto-generated constructor stub
 	}
 
-	public NonTorique(int sizeX, int sizeY, int nbHunt, Vue vue,int difficulte) {
-		super(sizeX, sizeY, nbHunt, vue,1);
+	public NonTorique(int sizeX, int sizeY, int nbHunt, Vue vue,int difficulte, int nbWall) {
+		super(sizeX, sizeY, nbHunt, vue,1,nbWall);
 		// TODO Auto-generated constructor stub
 	}
 	@Override
@@ -26,6 +27,7 @@ public class NonTorique extends Environement {
 		for (int i = x - 1; i <= x + 1; i++) {
 			for (int j = y - 1; j <= y + 1; j++) {
 				if (i >= 0 && j >= 0 && i < sizeX && j < sizeY && (x != i || y != j)) {
+					if(grille[i][j]==null || !grille[i][j].getClass().equals(Wall.class))
 					ca.add(new CaseAgent(i, j));
 
 				}

@@ -56,11 +56,11 @@ public class App {
 		if(prop.getProperty("type").equals("Hunter")) {
 			int nbHunter = Integer.parseInt(prop.getProperty("nbHunter"));
 			int difficulte = Integer.parseInt(prop.getProperty("difficulte"));
-			
+			int nbWall = Integer.parseInt(prop.getProperty("nbWall"));
 			if (Boolean.parseBoolean(prop.getProperty("torique"))) {
-				env = new Torique(sizeX, sizeY,1,vue,1);
+				env = new Torique(sizeX, sizeY,nbHunter,vue,difficulte,nbWall);
 			} else {
-				env = new NonTorique(sizeX, sizeY, nbHunter,vue,difficulte);
+				env = new NonTorique(sizeX, sizeY, nbHunter,vue,difficulte,nbWall);
 			}
 		}
 
