@@ -11,17 +11,21 @@ import core.Environement;
 
 public class Hunter extends Agent {
 	int pasX, pasY;
-
+	Avatar avatar;
 	
 
-	public Hunter(int posX, int posY, Agent[][] grille, Environement env, SMA sma, Boolean born) {
+	public Hunter(int posX, int posY, Agent[][] grille, Environement env, SMA sma, Boolean born,Avatar avatar) {
 		super(posX, posY, grille, env, sma, born);
+		this.avatar =avatar;
 	}
 
 	@Override
 	public void decide() {
-		CaseAgent ca = goTo();
-		
+		avatar.dijstra(new CaseAgent(avatar.getPosX(), avatar.getPosY()), 1);
+		avatar.afficherTab();
+		CaseAgent ca = goTo(avatar);
+		if(env.getCase(ca)!=null && env.getCase(ca).getClass().equals(Avatar.class))
+			System.out.println("Loooose");
 		move(posX, posY, ca.getX(), ca.getY());
 		
 	}

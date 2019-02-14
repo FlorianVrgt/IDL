@@ -1,5 +1,5 @@
-sizeY=5
-sizeX=5
+sizeY=10
+sizeX=10
 sizePixelX=1000
 sizePixelY=1000
 type=Hunter
@@ -15,6 +15,6 @@ difficulte=1
 
 
 nbTour=1000
-delay=500
+delay=3000
 torique=false
 grille=true

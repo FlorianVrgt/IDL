@@ -122,22 +122,25 @@ public abstract class Environement extends Observable {
 		}
 //		sma = new NonEquitable(listeAgent, grille);
 		sma = new SequentielEquitable(listeAgent, grille);
-		for (int i = 0; i < nbHunt; i++) {
-			int index = (int) (Math.random() * caseVide.size());
-			CaseAgent caseAgent = caseVide.get(index);
+		
+		int index = (int) (Math.random() * caseVide.size());
+		CaseAgent caseAgent = caseVide.get(index);
 
-			a = new Hunter(caseAgent.getX(), caseAgent.getY(), grille, this, sma, false);
+		Avatar avatar = new Avatar(caseAgent.getX(), caseAgent.getY(), grille, this, sma, false);
+		grille[caseAgent.getX()][caseAgent.getY()] = avatar;
+		listeAgent.add(avatar);
+		caseVide.remove(index);
+		
+		for (int i = 0; i < nbHunt; i++) {
+			 index = (int) (Math.random() * caseVide.size());
+			 caseAgent = caseVide.get(index);
+
+			a = new Hunter(caseAgent.getX(), caseAgent.getY(), grille, this, sma, false,avatar);
 			grille[caseAgent.getX()][caseAgent.getY()] = a;
 			listeAgent.add(a);
 			caseVide.remove(index);
 		}
-		int index = (int) (Math.random() * caseVide.size());
-		CaseAgent caseAgent = caseVide.get(index);
-
-		a = new Avatar(caseAgent.getX(), caseAgent.getY(), grille, this, sma, false);
-		grille[caseAgent.getX()][caseAgent.getY()] = a;
-		listeAgent.add(a);
-		caseVide.remove(index);
+		
 
 	}
 	
