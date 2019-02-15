@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 import core.Agent;
+import particules.Particules;
+import wator.Fish;
+import wator.Shark;
 
 public class RdmEquitable extends SMA{
 
@@ -23,11 +26,16 @@ public class RdmEquitable extends SMA{
 					Agent a = cplist.get(j);
 					cplist.remove(a);
 					
-			if(!a.isDead()) {
-				a.decide();
-			}else {
-				listeAgent.remove(a);
-			}
+					if((a.getClass().equals(Shark.class) || a.getClass().equals(Fish.class))){
+						 Particules p = (Particules) a; 
+							if(!p.isDead()) {
+								p.decide();
+							}else {
+								listeAgent.remove(p);
+							}
+						}else {
+							a.decide();
+						}
 			
 
 		}

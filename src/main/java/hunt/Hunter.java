@@ -30,21 +30,7 @@ public class Hunter extends Agent {
 		
 	}
 
-	@Override
-	public boolean isDead() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
-	
-
-
-
-	@Override
-	public void die() {
-		// TODO Auto-generated method stub
-
-	}
 
 	
 

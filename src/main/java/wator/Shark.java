@@ -42,8 +42,8 @@ public class Shark extends Particules {
 		if (listCanEat.size() >= 1) {
 			// System.out.println("eat");
 			CaseAgent toMove = listCanEat.get((int) (Math.random() * listCanEat.size()));
-			
-		env.getCase(toMove).die();
+		Fish f = (Fish) env.getCase(toMove);
+		f.die();
 			if (energyCurrent >= energyToReproduce) {
 				
 				int antx = posX;

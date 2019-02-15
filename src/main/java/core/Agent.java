@@ -76,9 +76,6 @@ public abstract class Agent {
 		this.posX = posX;
 	}
 
-	public abstract boolean isDead();
-
-	public abstract void die();
 
 	
 

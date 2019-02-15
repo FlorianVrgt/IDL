@@ -1,5 +1,5 @@
-sizeY=300
-sizeX=300
+sizeY=100
+sizeX=100
 sizePixelX=1000
 sizePixelY=1000
 type=Wator
@@ -15,6 +15,6 @@ difficulte=1
 nbWall=100
 
 nbTour=1000
-delay=5
-torique=false
+delay=1
+torique=true
 grille=false

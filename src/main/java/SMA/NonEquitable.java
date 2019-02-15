@@ -3,6 +3,9 @@ package SMA;
 import java.util.List;
 
 import core.Agent;
+import particules.Particules;
+import wator.Fish;
+import wator.Shark;
 
 public class NonEquitable extends SMA{
 
@@ -15,11 +18,18 @@ public class NonEquitable extends SMA{
 	protected void sequence() {
 		for (int i = 0; i < listeAgent.size(); i++) {
 			Agent a = listeAgent.get((int) (Math.random()*listeAgent.size()));
-			if(!a.isDead()) {
-				a.decide();
+			
+			if((a.getClass().equals(Shark.class) || a.getClass().equals(Fish.class))){
+			 Particules p = (Particules) a; 
+				if(!p.isDead()) {
+					p.decide();
+				}else {
+					listeAgent.remove(p);
+				}
 			}else {
-				listeAgent.remove(a);
+				a.decide();
 			}
+			
 			
 
 		}

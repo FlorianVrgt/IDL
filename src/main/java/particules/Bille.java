@@ -97,17 +97,6 @@ public class Bille extends Agent{
 		pasY*=-1;
 	}
 
-	@Override
-	public boolean isDead() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void die() {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 }
