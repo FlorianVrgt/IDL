@@ -25,8 +25,11 @@ public abstract class Environement extends Observable {
 	public Vue vue;
 	protected List<Agent> listeAgent;
 
-	public Environement(int sizeX, int sizeY, int nbFish, int nbShark, Vue vue) {
+	public Environement(int sizeX, int sizeY, int nbFish, int nbShark, Vue vue,SMA sma) {
 		this.vue=vue;
+		this.sma=sma;
+		sma.setListeAgent(listeAgent);
+		sma.setGrille(grille);
 		die = 0;
 		ArrayList<CaseAgent> caseVide = new ArrayList<CaseAgent>();
 		listeAgent = new ArrayList<Agent>();
@@ -47,7 +50,9 @@ public abstract class Environement extends Observable {
 				caseVide.add(new CaseAgent(i, j));
 			}
 		}
-		sma = new NonEquitable(listeAgent, grille);
+		sma.setListeAgent(listeAgent);
+		sma.setGrille(grille);
+		
 		for (int i = 0; i < nbAgent; i++) {
 			int index = (int) (Math.random() * caseVide.size());
 			System.out.println(index);
@@ -70,7 +75,10 @@ public abstract class Environement extends Observable {
 
 	}
 
-	public Environement(int sizeX, int sizeY, int nbBille, Vue vue) {
+	public Environement(int sizeX, int sizeY, int nbBille, Vue vue,SMA sma) {
+		this.sma=sma;
+
+
 		this.vue=vue;
 		die = 0;
 		ArrayList<CaseAgent> caseVide = new ArrayList<CaseAgent>();
@@ -81,6 +89,10 @@ public abstract class Environement extends Observable {
 		this.sizeY = sizeY;
 
 		this.addObserver(vue);
+		
+		sma.setListeAgent(listeAgent);
+		sma.setGrille(grille);
+		
 		if (nbBille >= sizeX * sizeY) {
 			System.exit(-1);
 		}
@@ -90,8 +102,7 @@ public abstract class Environement extends Observable {
 				caseVide.add(new CaseAgent(i, j));
 			}
 		}
-//		sma = new NonEquitable(listeAgent, grille);
-		sma = new SequentielEquitable(listeAgent, grille);
+
 		for (int i = 0; i < nbBille; i++) {
 			int index = (int) (Math.random() * caseVide.size());
 			CaseAgent caseAgent = caseVide.get(index);
@@ -105,7 +116,10 @@ public abstract class Environement extends Observable {
 	}
 	
 	
-	public Environement(int sizeX, int sizeY, int nbHunt, Vue vue, int difficulte, int nbWall) {
+	public Environement(int sizeX, int sizeY, int nbHunt, Vue vue, int difficulte, int nbWall,SMA sma) {
+		this.sma=sma;
+
+		
 		this.vue=vue;
 		die = 0;
 		ArrayList<CaseAgent> caseVide = new ArrayList<CaseAgent>();
@@ -114,7 +128,10 @@ public abstract class Environement extends Observable {
 		Agent a = null;
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
-
+		
+		sma.setListeAgent(listeAgent);
+		sma.setGrille(grille);
+		
 		this.addObserver(vue);
 		if (nbHunt+1 >= sizeX * sizeY) {
 			System.exit(-1);
@@ -125,9 +142,7 @@ public abstract class Environement extends Observable {
 				caseVide.add(new CaseAgent(i, j));
 			}
 		}
-//		sma = new NonEquitable(listeAgent, grille);
-		sma = new SequentielEquitable(listeAgent, grille);
-		
+
 		int index = (int) (Math.random() * caseVide.size());
 		CaseAgent caseAgent = caseVide.get(index);
 

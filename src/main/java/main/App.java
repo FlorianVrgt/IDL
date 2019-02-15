@@ -8,6 +8,10 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
 
+import SMA.NonEquitable;
+import SMA.RdmEquitable;
+import SMA.SMA;
+import SMA.SequentielEquitable;
 import Vue.Vue;
 import core.Agent;
 import core.Environement;
@@ -38,13 +42,27 @@ public class App {
 		int delay = Integer.parseInt(prop.getProperty("delay"));
 		int sizeX = Integer.parseInt(prop.getProperty("sizeX"));
 		int sizeY = Integer.parseInt(prop.getProperty("sizeY"));
+		
+		SMA sma=null;
+		
+		if(prop.getProperty("SMA").equals("NonEquitable")) {
+			sma= new NonEquitable(null, null);
+		}
+		
+		if(prop.getProperty("SMA").equals("RdmEquitable")) {
+			sma = new RdmEquitable(null,null);
+		}
+		
+		if(prop.getProperty("SMA").equals("SequentielEquitable")) {
+			sma = new SequentielEquitable(null,null);
+		}
 
 		if(prop.getProperty("type").equals("Bille"))  {
 			int nbBille = Integer.parseInt(prop.getProperty("nbBille"));
 			if (Boolean.parseBoolean(prop.getProperty("torique"))) {
-				env = new Torique(sizeX, sizeY, nbBille, vue);
+				env = new Torique(sizeX, sizeY, nbBille, vue,sma);
 			} else {
-				env = new NonTorique(sizeX, sizeY, nbBille, vue);
+				env = new NonTorique(sizeX, sizeY, nbBille, vue,sma);
 			}
 		} 
 		
@@ -52,9 +70,9 @@ public class App {
 			int nbFish = Integer.parseInt(prop.getProperty("nbFish"));
 			int nbShark = Integer.parseInt(prop.getProperty("nbShark"));
 			if (Boolean.parseBoolean(prop.getProperty("torique"))) {
-				env = new Torique(sizeX, sizeY, nbFish, nbShark, vue);
+				env = new Torique(sizeX, sizeY, nbFish, nbShark, vue,sma);
 			} else {
-				env = new NonTorique(sizeX, sizeY, nbFish, nbShark, vue);
+				env = new NonTorique(sizeX, sizeY, nbFish, nbShark, vue,sma);
 			}
 		}
 		if(prop.getProperty("type").equals("Hunter")) {
@@ -62,11 +80,12 @@ public class App {
 			int difficulte = Integer.parseInt(prop.getProperty("difficulte"));
 			int nbWall = Integer.parseInt(prop.getProperty("nbWall"));
 			if (Boolean.parseBoolean(prop.getProperty("torique"))) {
-				env = new Torique(sizeX, sizeY,nbHunter,vue,difficulte,nbWall);
+				env = new Torique(sizeX, sizeY,nbHunter,vue,difficulte,nbWall,sma);
 			} else {
-				env = new NonTorique(sizeX, sizeY, nbHunter,vue,difficulte,nbWall);
+				env = new NonTorique(sizeX, sizeY, nbHunter,vue,difficulte,nbWall,sma);
 			}
 		}
+		
 
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("result.csv", false));

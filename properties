@@ -1,8 +1,8 @@
-sizeY=100
-sizeX=100
+sizeY=50
+sizeX=50
 sizePixelX=1000
 sizePixelY=1000
-type=Wator
+type=Hunter
 
 nbShark=50
 nbFish=100
@@ -18,3 +18,4 @@ nbTour=1000
 delay=1
 torique=true
 grille=false
+SMA=RdmEquitable

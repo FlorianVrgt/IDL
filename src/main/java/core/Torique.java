@@ -2,23 +2,24 @@ package core;
 
 import java.util.ArrayList;
 
+import SMA.SMA;
 import Vue.Vue;
 import hunt.Wall;
 
 public class Torique extends Environement {
 
-	public Torique(int sizeX, int sizeY, int nbFish, int nbShark, Vue vue) {
-		super(sizeX, sizeY, nbFish, nbShark, vue);
+	public Torique(int sizeX, int sizeY, int nbFish, int nbShark, Vue vue,SMA sma) {
+		super(sizeX, sizeY, nbFish, nbShark, vue,sma);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Torique(int sizeX, int sizeY, int nbBille, Vue vue) {
-		super(sizeX, sizeY, nbBille, vue);
+	public Torique(int sizeX, int sizeY, int nbBille, Vue vue,SMA sma) {
+		super(sizeX, sizeY, nbBille, vue,sma);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Torique(int sizeX, int sizeY, int nbHunt, Vue vue,int difficulte, int nbWall) {
-		super(sizeX, sizeY, nbHunt, vue,1,nbWall);
+	public Torique(int sizeX, int sizeY, int nbHunt, Vue vue,int difficulte, int nbWall,SMA sma) {
+		super(sizeX, sizeY, nbHunt, vue,1,nbWall,sma);
 		// TODO Auto-generated constructor stub
 	}
 

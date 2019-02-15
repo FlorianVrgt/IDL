@@ -28,6 +28,14 @@ public abstract class  SMA {
 
 	}
 
+	public Agent[][] getGrille() {
+		return grille;
+	}
+
+	public void setGrille(Agent[][] grille) {
+		this.grille = grille;
+	}
+
 	public void run() { // modif agent create
 		for (Agent agent : agentToAdd) {
 			listeAgent.add(agent);
