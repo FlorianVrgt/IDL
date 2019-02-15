@@ -46,12 +46,6 @@ public class Hunter extends Agent {
 
 	}
 
-	@Override
-	public Boolean getBorn() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	
 
 }

@@ -23,6 +23,8 @@ public abstract class Particules extends Agent {
 	public abstract void create(int x, int y);
 
 	public abstract boolean isMustDie();
+	
+	
 
 	public void die() {
 		grille[posX][posY] = null;

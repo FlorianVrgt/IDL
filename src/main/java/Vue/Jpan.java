@@ -10,6 +10,7 @@ import hunt.Avatar;
 import hunt.Hunter;
 import hunt.Wall;
 import particules.Bille;
+import particules.Particules;
 import wator.*;
 
 public class Jpan extends JPanel {
@@ -72,7 +73,8 @@ public class Jpan extends JPanel {
 							g.fillOval(i*((int)sizeX),j*((int)sizeY), ((int)sizeX), ((int)sizeY));
 						}
 						if(env.getGrille()[i][j].getClass() == Fish.class) {
-							if(env.getGrille()[i][j].getBorn()) {
+							Particules p = (Particules) env.getGrille()[i][j];
+							if(p.getBorn()) {
 								g.setColor(new Color(255,255,0));
 							}
 							else {
@@ -81,7 +83,8 @@ public class Jpan extends JPanel {
 							g.fillOval(i*((int)sizeX),j*((int)sizeY), ((int)sizeX), ((int)sizeY));
 						}
 						if(env.getGrille()[i][j].getClass() == Shark.class) {
-							if(env.getGrille()[i][j].getBorn()) {
+							Particules p = (Particules) env.getGrille()[i][j];
+							if(p.getBorn()) {
 								g.setColor(new Color(255,50,250));
 							}
 							else {

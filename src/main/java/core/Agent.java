@@ -80,7 +80,7 @@ public abstract class Agent {
 
 	public abstract void die();
 
-	public abstract Boolean getBorn();
+	
 
 	public void move(int x, int y, int futx, int futy) {
 		if (this != grille[posX][posY]) {

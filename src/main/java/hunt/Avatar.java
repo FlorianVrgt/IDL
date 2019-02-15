@@ -47,11 +47,6 @@ private int[][] tabDijsktra;
 		
 	}
 
-	@Override
-	public Boolean getBorn() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
