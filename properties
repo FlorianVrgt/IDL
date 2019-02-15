@@ -1,8 +1,8 @@
-sizeY=50
-sizeX=50
+sizeY=300
+sizeX=300
 sizePixelX=1000
 sizePixelY=1000
-type=Hunter
+type=Wator
 
 nbShark=50
 nbFish=100
@@ -15,6 +15,6 @@ difficulte=1
 nbWall=100
 
 nbTour=1000
-delay=500
+delay=5
 torique=false
-grille=true
+grille=false

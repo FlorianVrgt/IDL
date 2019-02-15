@@ -5,12 +5,16 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Properties;
 
 import Vue.Vue;
+import core.Agent;
 import core.Environement;
 import core.NonTorique;
 import core.Torique;
+import wator.Fish;
+import wator.Shark;
 
 /**
  * Hello world!
@@ -70,7 +74,18 @@ public class App {
 			for (int i = 0; i < nbTour; i++) {
 
 				writer = new BufferedWriter(new FileWriter("result.csv", true));
-				writer.append(i + "," + env.getListeAgent().size() + ";\n");
+				List<Agent> list = env.getListeAgent();
+				int nbFish = 0;
+				int nbShark = 0;
+				for (Agent list1 : list) {
+					if(list1 instanceof Fish) {
+						nbFish++;
+					}
+					if(list1 instanceof Shark) {
+						nbShark++;
+					}
+				}
+				writer.append(i + "," + nbFish + "," + nbShark + ";\n");
 
 				writer.close();
 

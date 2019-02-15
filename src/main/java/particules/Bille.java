@@ -17,6 +17,10 @@ public class Bille extends Agent{
 		super(posX, posY, grille, env, sma, born);
 		pasX=(int) (Math.random()*3)-1;
 		pasY= (int) (Math.random()*3)-1;
+		while(pasX == 0 && pasY == 0) {
+			pasX=(int) (Math.random()*3)-1;
+			pasY= (int) (Math.random()*3)-1;
+		}
 		
 		
 	}
@@ -79,8 +83,6 @@ public class Bille extends Agent{
 		if (this != grille[posX][posY]) {
 			System.out.println("Erreur");
 		}
-		// System.out.println("x:"+x+" y:"+y+"futx:"+futx+"futy: "+futy);
-//		System.out.println(env.caseAccesible(x, y));
 		grille[futx][futy] = this;
 		grille[x][y] = null;
 		posX = futx;
